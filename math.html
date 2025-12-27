@@ -13,68 +13,156 @@
 
     <!-- Top Fixed Bar -->
     <div class="hero-section">
-        <div class="freya-avatar-wrapper float-anim">
-            <div id="freya-avatar" class="freya-avatar" onclick="triggerFreyaTalk()">
-                <!-- Pure CSS Winter Goddess Character -->
-                <div class="freya-character">
-                    <!-- Wings (Behind Everything) -->
-                    <div class="wings">
-                        <div class="wing left-wing"></div>
-                        <div class="wing right-wing"></div>
+        <!-- Magical Winter Landscape -->
+        <div class="landscape">
+            <!-- Aurora Borealis -->
+            <div class="aurora">
+                <div class="aurora-band ab1"></div>
+                <div class="aurora-band ab2"></div>
+                <div class="aurora-band ab3"></div>
+            </div>
+            <!-- Moon -->
+            <div class="moon">
+                <div class="moon-glow"></div>
+            </div>
+            <!-- Stars -->
+            <div class="stars">
+                <div class="star s1">✦</div>
+                <div class="star s2">✧</div>
+                <div class="star s3">✦</div>
+                <div class="star s4">✧</div>
+                <div class="star s5">⋆</div>
+                <div class="star s6">✦</div>
+            </div>
+            <!-- Mountains -->
+            <div class="mountains">
+                <div class="mountain m-back"></div>
+                <div class="mountain m-mid"></div>
+                <div class="mountain m-front"></div>
+            </div>
+            <!-- Pine Trees -->
+            <div class="trees">
+                <div class="tree t1"></div>
+                <div class="tree t2"></div>
+                <div class="tree t3"></div>
+                <div class="tree t4"></div>
+                <div class="tree t5"></div>
+            </div>
+            <!-- Snow Ground -->
+            <div class="snow-ground"></div>
+            <!-- Mist Layers -->
+            <div class="mist mist1"></div>
+            <div class="mist mist2"></div>
+            
+            <!-- Enhanced Effects (appear at higher levels) -->
+            <div class="shooting-stars">
+                <div class="shooting-star ss1"></div>
+                <div class="shooting-star ss2"></div>
+                <div class="shooting-star ss3"></div>
+            </div>
+            
+            <div class="magic-circle"></div>
+            
+            <div class="divine-pillar"></div>
+        </div>
+        
+        <!-- Equipment Display - Props Only -->
+        <div class="equipment-display float-anim">
+            <div id="freya-avatar" class="equipment-container" onclick="triggerFreyaTalk()">
+                <!-- Aura Background -->
+                <div class="equipment-aura"></div>
+                
+                <!-- Wings (Behind Everything) -->
+                <div class="wings">
+                    <div class="wing left-wing">
+                        <div class="wing-feather wf1"></div>
+                        <div class="wing-feather wf2"></div>
+                        <div class="wing-feather wf3"></div>
                     </div>
-                    <!-- Cape/Cloak -->
-                    <div class="cape"></div>
-                    <!-- Hair Back Layer -->
-                    <div class="hair-back"></div>
-                    <!-- Body/Dress -->
-                    <div class="body-dress">
-                        <div class="collar"></div>
-                        <div class="pendant"></div>
+                    <div class="wing right-wing">
+                        <div class="wing-feather wf1"></div>
+                        <div class="wing-feather wf2"></div>
+                        <div class="wing-feather wf3"></div>
                     </div>
-                    <!-- Scarf (for early levels) -->
-                    <div class="scarf">
-                        <div class="scarf-end"></div>
-                    </div>
-                    <!-- Face -->
-                    <div class="face">
-                        <!-- Eyes -->
-                        <div class="eye left-eye">
-                            <div class="pupil"></div>
-                            <div class="eye-sparkle"></div>
-                        </div>
-                        <div class="eye right-eye">
-                            <div class="pupil"></div>
-                            <div class="eye-sparkle"></div>
-                        </div>
-                        <!-- Blush -->
-                        <div class="blush left-blush"></div>
-                        <div class="blush right-blush"></div>
-                        <!-- Mouth -->
-                        <div class="mouth"></div>
-                    </div>
-                    <!-- Hair Front Layer -->
-                    <div class="hair-front">
-                        <div class="bangs"></div>
-                        <div class="side-hair left-side"></div>
-                        <div class="side-hair right-side"></div>
-                    </div>
-                    <!-- Crown / Tiara -->
-                    <div class="tiara">
-                        <div class="tiara-gem"></div>
-                    </div>
-                    <!-- Magic Staff -->
-                    <div class="magic-staff">
-                        <div class="staff-orb"></div>
-                    </div>
-                    <!-- Floating Snowflakes -->
-                    <div class="snowflake sf1">❄</div>
-                    <div class="snowflake sf2">❅</div>
-                    <div class="snowflake sf3">❆</div>
-                    <!-- Magic Particles -->
-                    <div class="magic-particle mp1"></div>
-                    <div class="magic-particle mp2"></div>
-                    <div class="magic-particle mp3"></div>
                 </div>
+                
+                <!-- Cape/Cloak (Flowing behind) -->
+                <div class="cape">
+                    <div class="cape-pattern"></div>
+                </div>
+                
+                <!-- Scarf (for early levels) -->
+                <div class="scarf">
+                    <div class="scarf-end"></div>
+                </div>
+                
+                <!-- Central Crown/Tiara (Main Focus) -->
+                <div class="tiara-display">
+                    <div class="tiara-band"></div>
+                    <div class="tiara-gem main-gem"></div>
+                    <div class="tiara-gem side-gem left-gem"></div>
+                    <div class="tiara-gem side-gem right-gem"></div>
+                </div>
+                
+                <!-- Central Orb/Pendant -->
+                <div class="central-orb">
+                    <div class="orb-inner"></div>
+                    <div class="orb-ring r1"></div>
+                    <div class="orb-ring r2"></div>
+                </div>
+                
+                <!-- Magic Staff -->
+                <div class="magic-staff">
+                    <div class="staff-shaft"></div>
+                    <div class="staff-head">
+                        <div class="staff-orb"></div>
+                        <div class="staff-wings">
+                            <div class="staff-wing sw-left"></div>
+                            <div class="staff-wing sw-right"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- White Cat Pet -->
+                <div class="pet-cat">
+                    <div class="cat-body">
+                        <div class="cat-tail"></div>
+                    </div>
+                    <div class="cat-head">
+                        <div class="cat-ear left-ear"></div>
+                        <div class="cat-ear right-ear"></div>
+                        <div class="cat-face">
+                            <div class="cat-eye left-cat-eye"></div>
+                            <div class="cat-eye right-cat-eye"></div>
+                            <div class="cat-nose"></div>
+                            <div class="cat-mouth"></div>
+                            <div class="cat-whisker left-whisker"></div>
+                            <div class="cat-whisker right-whisker"></div>
+                        </div>
+                    </div>
+                    <div class="cat-paws">
+                        <div class="cat-paw front-left"></div>
+                        <div class="cat-paw front-right"></div>
+                    </div>
+                    <!-- Cat accessories (evolve with level) -->
+                    <div class="cat-accessory">
+                        <div class="cat-bow"></div>
+                        <div class="cat-halo"></div>
+                        <div class="cat-wings">
+                            <div class="cat-wing cw-left"></div>
+                            <div class="cat-wing cw-right"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating Magic Effects -->
+                <div class="snowflake sf1">❄</div>
+                <div class="snowflake sf2">❅</div>
+                <div class="snowflake sf3">❆</div>
+                <div class="magic-particle mp1"></div>
+                <div class="magic-particle mp2"></div>
+                <div class="magic-particle mp3"></div>
+                <div class="magic-particle mp4"></div>
             </div>
         </div>
         <div class="level-badge" id="realm-level">第1重境界</div>

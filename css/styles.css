@@ -55,49 +55,447 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(5, 10, 20, 0.9);
+    background: linear-gradient(180deg, 
+        rgba(5, 15, 35, 0.98) 0%, 
+        rgba(10, 25, 50, 0.95) 50%,
+        rgba(15, 30, 55, 0.92) 100%);
     backdrop-filter: blur(12px);
     padding: 15px 20px;
+    padding-top: 120px;
     text-align: center;
     border-bottom: 1px solid var(--border-frost);
     box-shadow: 0 5px 30px rgba(0,0,0,0.6);
     transition: all 0.3s ease;
+    overflow: hidden;
 }
 
-.freya-avatar-wrapper {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 10px;
-    position: relative;
-}
+/* ========================================
+   Magical Winter Landscape
+   ======================================== */
 
-.freya-avatar {
+.landscape {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* --- Aurora Borealis --- */
+.aurora {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    overflow: hidden;
+}
+
+.aurora-band {
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    left: -50%;
+    opacity: 0.4;
+    filter: blur(20px);
+    animation: aurora-wave 8s ease-in-out infinite;
+}
+
+.ab1 {
+    top: 5%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(100, 255, 200, 0.3) 20%, 
+        rgba(100, 200, 255, 0.4) 40%, 
+        rgba(150, 100, 255, 0.3) 60%, 
+        rgba(100, 255, 200, 0.3) 80%, 
+        transparent 100%);
+    animation-delay: 0s;
+}
+
+.ab2 {
+    top: 15%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(100, 200, 255, 0.25) 25%, 
+        rgba(165, 242, 243, 0.35) 50%, 
+        rgba(100, 200, 255, 0.25) 75%, 
+        transparent 100%);
+    animation-delay: 2s;
+}
+
+.ab3 {
+    top: 8%;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(150, 100, 255, 0.2) 30%, 
+        rgba(100, 255, 200, 0.3) 50%, 
+        rgba(150, 100, 255, 0.2) 70%, 
+        transparent 100%);
+    animation-delay: 4s;
+}
+
+@keyframes aurora-wave {
+    0%, 100% { 
+        transform: translateX(-10%) skewX(-5deg);
+        opacity: 0.3;
+    }
+    50% { 
+        transform: translateX(10%) skewX(5deg);
+        opacity: 0.5;
+    }
+}
+
+/* --- Moon --- */
+.moon {
+    position: absolute;
+    top: 8%;
+    right: 12%;
+    width: 35px;
+    height: 35px;
+    background: radial-gradient(circle at 30% 30%, 
+        #fff 0%, 
+        #e8f0ff 40%, 
+        #c8d8f0 70%, 
+        #a0b8d8 100%);
     border-radius: 50%;
-    border: 3px solid var(--primary-glow);
-    box-shadow: 0 0 20px var(--primary-glow);
-    background: linear-gradient(180deg, #1a2a4f 0%, #0a1525 100%);
-    overflow: visible;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    cursor: pointer;
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(200, 220, 255, 0.5),
+        0 0 60px rgba(165, 242, 243, 0.3);
+}
+
+.moon-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        transparent 50%);
+    animation: moon-pulse 4s ease-in-out infinite;
+}
+
+@keyframes moon-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* --- Stars --- */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+}
+
+.star {
+    position: absolute;
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px rgba(165, 242, 243, 0.5);
+    animation: star-twinkle 2s ease-in-out infinite;
+}
+
+.s1 { top: 10%; left: 8%; font-size: 8px; animation-delay: 0s; }
+.s2 { top: 5%; left: 25%; font-size: 6px; animation-delay: 0.5s; }
+.s3 { top: 15%; left: 45%; font-size: 7px; animation-delay: 1s; }
+.s4 { top: 8%; left: 65%; font-size: 5px; animation-delay: 1.5s; }
+.s5 { top: 18%; left: 80%; font-size: 8px; animation-delay: 0.8s; }
+.s6 { top: 12%; left: 92%; font-size: 6px; animation-delay: 1.2s; }
+
+@keyframes star-twinkle {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* --- Mountains --- */
+.mountains {
+    position: absolute;
+    bottom: 15%;
+    left: 0;
+    width: 100%;
+    height: 50%;
+}
+
+.mountain {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(180deg, 
+        rgba(40, 60, 100, 0.9) 0%, 
+        rgba(20, 35, 60, 0.95) 100%);
+}
+
+.m-back {
+    height: 60%;
+    clip-path: polygon(
+        0% 100%, 
+        5% 70%, 15% 40%, 25% 60%, 
+        35% 30%, 45% 50%, 55% 25%, 
+        65% 45%, 75% 20%, 85% 55%, 
+        95% 35%, 100% 100%
+    );
+    background: linear-gradient(180deg, 
+        rgba(60, 80, 120, 0.6) 0%, 
+        rgba(40, 55, 85, 0.7) 50%,
+        rgba(25, 40, 65, 0.8) 100%);
+}
+
+.m-back::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        transparent 100%);
+    clip-path: inherit;
+}
+
+.m-mid {
+    height: 45%;
+    clip-path: polygon(
+        0% 100%, 
+        10% 55%, 20% 70%, 30% 35%, 
+        40% 60%, 50% 30%, 60% 55%, 
+        70% 25%, 80% 50%, 90% 40%, 
+        100% 100%
+    );
+    background: linear-gradient(180deg, 
+        rgba(45, 65, 100, 0.8) 0%, 
+        rgba(30, 45, 75, 0.9) 100%);
+}
+
+.m-mid::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.4) 0%, 
+        transparent 100%);
+    clip-path: inherit;
+}
+
+.m-front {
+    height: 30%;
+    clip-path: polygon(
+        0% 100%, 
+        8% 60%, 18% 80%, 28% 45%, 
+        38% 70%, 48% 35%, 58% 65%, 
+        68% 40%, 78% 60%, 88% 50%, 
+        100% 100%
+    );
+    background: linear-gradient(180deg, 
+        rgba(35, 50, 80, 0.9) 0%, 
+        rgba(20, 35, 55, 0.95) 100%);
+}
+
+.m-front::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.5) 0%, 
+        transparent 100%);
+    clip-path: inherit;
+}
+
+/* --- Pine Trees --- */
+.trees {
+    position: absolute;
+    bottom: 8%;
+    left: 0;
+    width: 100%;
+    height: 35%;
+}
+
+.tree {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(180deg, 
+        rgba(15, 35, 45, 0.95) 0%, 
+        rgba(10, 25, 35, 1) 100%);
+}
+
+.t1 {
+    left: 3%;
+    width: 25px;
+    height: 50px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.t2 {
+    left: 12%;
+    width: 35px;
+    height: 65px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.t3 {
+    right: 25%;
+    width: 20px;
+    height: 40px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.t4 {
+    right: 10%;
+    width: 40px;
+    height: 70px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.t5 {
+    right: 2%;
+    width: 28px;
+    height: 55px;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Tree snow caps */
+.tree::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(180deg, 
+        rgba(255, 255, 255, 0.6) 0%, 
+        transparent 100%);
+    clip-path: inherit;
+}
+
+/* --- Snow Ground --- */
+.snow-ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 12%;
+    background: linear-gradient(180deg, 
+        rgba(200, 220, 240, 0.4) 0%, 
+        rgba(180, 200, 220, 0.6) 50%,
+        rgba(150, 180, 200, 0.7) 100%);
+    border-radius: 100% 100% 0 0 / 50% 50% 0 0;
+}
+
+.snow-ground::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.5) 20%, 
+        rgba(255, 255, 255, 0.7) 50%, 
+        rgba(255, 255, 255, 0.5) 80%, 
+        transparent 100%);
+    border-radius: 50%;
+    filter: blur(3px);
+}
+
+/* --- Mist Layers --- */
+.mist {
+    position: absolute;
+    left: 0;
+    width: 200%;
+    height: 30px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(200, 220, 255, 0.15) 25%, 
+        rgba(200, 220, 255, 0.25) 50%, 
+        rgba(200, 220, 255, 0.15) 75%, 
+        transparent 100%);
+    filter: blur(8px);
+}
+
+.mist1 {
+    bottom: 25%;
+    animation: mist-drift 20s linear infinite;
+}
+
+.mist2 {
+    bottom: 15%;
+    opacity: 0.7;
+    animation: mist-drift 25s linear infinite reverse;
+}
+
+@keyframes mist-drift {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
+
+/* ========================================
+   Equipment Display (Props Only)
+   ======================================== */
+
+.equipment-display {
+    width: 120px;
+    height: 100px;
+    margin: 0 auto 15px;
     position: relative;
+    z-index: 10;
+}
+
+.equipment-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.5s ease;
 }
 
 /* Max Level Golden Effect */
-.freya-avatar.level-max {
-    border-color: var(--gold);
-    box-shadow: 0 0 40px var(--gold), inset 0 0 10px var(--gold);
+.equipment-container.level-max::before {
+    content: '';
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: radial-gradient(ellipse at center,
+        rgba(255, 215, 0, 0.3) 0%,
+        transparent 60%);
+    border-radius: 50%;
     animation: pulse-gold 2s infinite;
+    pointer-events: none;
 }
 
 @keyframes pulse-gold {
-    0% { box-shadow: 0 0 20px var(--gold); }
-    50% { box-shadow: 0 0 40px var(--gold), 0 0 10px white; }
-    100% { box-shadow: 0 0 20px var(--gold); }
+    0% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0.5; transform: scale(1); }
+}
+
+/* Equipment Aura */
+.equipment-aura {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(ellipse at center,
+        rgba(165, 242, 243, 0.2) 0%,
+        transparent 70%);
+    border-radius: 50%;
+    animation: aura-pulse 3s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .level-badge {
@@ -110,6 +508,8 @@ body {
     font-weight: 800;
     margin-bottom: 4px;
     box-shadow: 0 0 10px rgba(107, 72, 255, 0.5);
+    position: relative;
+    z-index: 10;
 }
 
 .hero-title {
@@ -119,6 +519,8 @@ body {
     margin: 0;
     text-shadow: 0 0 10px var(--primary-glow);
     letter-spacing: 1px;
+    position: relative;
+    z-index: 10;
 }
 
 /* Progress Bar System */
@@ -129,6 +531,8 @@ body {
     gap: 10px;
     font-size: 0.8rem;
     color: var(--primary-glow);
+    position: relative;
+    z-index: 10;
 }
 
 .progress-track {
@@ -335,245 +739,23 @@ body {
     50% { transform: translateY(-8px); }
 }
 
-/* ========================================
-   Pure CSS Winter Goddess Character
-   ======================================== */
-
-.freya-character {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: visible;
+@keyframes aura-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
 }
 
-/* --- Hair Back Layer --- */
-.hair-back {
-    position: absolute;
-    width: 85%;
-    height: 75%;
-    bottom: -5%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, #c8e8ff 0%, #9dd5f5 40%, #7cc8f0 100%);
-    border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
-    z-index: 1;
-    box-shadow: 
-        inset -8px -5px 15px rgba(100, 180, 255, 0.4),
-        0 8px 20px rgba(0, 0, 0, 0.3);
-}
-
-.hair-back::before {
-    content: '';
-    position: absolute;
-    width: 25%;
-    height: 45%;
-    background: linear-gradient(180deg, #9dd5f5, #6bc0eb);
-    bottom: -30%;
-    left: 5%;
-    border-radius: 0 0 50% 50%;
-    transform: rotate(-15deg);
-}
-
-.hair-back::after {
-    content: '';
-    position: absolute;
-    width: 25%;
-    height: 45%;
-    background: linear-gradient(180deg, #9dd5f5, #6bc0eb);
-    bottom: -30%;
-    right: 5%;
-    border-radius: 0 0 50% 50%;
-    transform: rotate(15deg);
-}
-
-/* --- Face --- */
-.face {
-    position: absolute;
-    width: 62%;
-    height: 58%;
-    top: 22%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, #fff5f0 0%, #ffe8e0 60%, #ffd5c8 100%);
-    border-radius: 50% 50% 48% 48% / 55% 55% 45% 45%;
-    z-index: 10;
-    box-shadow: 
-        inset 0 -5px 15px rgba(255, 180, 160, 0.3),
-        0 3px 10px rgba(0, 0, 0, 0.15);
-}
-
-/* --- Eyes --- */
-.eye {
-    position: absolute;
-    width: 26%;
-    height: 32%;
-    top: 35%;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.1),
-        0 1px 2px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.left-eye {
-    left: 15%;
-}
-
-.right-eye {
-    right: 15%;
-}
-
-.pupil {
+/* --- Central Tiara Display (Main Crown) --- */
+.tiara-display {
     position: absolute;
     width: 70%;
-    height: 70%;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: radial-gradient(circle at 40% 30%, 
-        #4ecdc4 0%, 
-        #44a3aa 30%, 
-        #2d5a6b 70%, 
-        #1a3a4a 100%);
-    border-radius: 50%;
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
-    animation: blink 4s ease-in-out infinite;
-}
-
-.eye-sparkle {
-    position: absolute;
-    width: 25%;
-    height: 25%;
-    top: 25%;
-    left: 55%;
-    background: #fff;
-    border-radius: 50%;
-    z-index: 5;
-    box-shadow: 
-        -4px 5px 0 1px rgba(255, 255, 255, 0.6);
-}
-
-@keyframes blink {
-    0%, 45%, 55%, 100% { transform: translateX(-50%) scaleY(1); }
-    50% { transform: translateX(-50%) scaleY(0.1); }
-}
-
-/* --- Blush --- */
-.blush {
-    position: absolute;
-    width: 20%;
-    height: 12%;
-    top: 58%;
-    background: radial-gradient(ellipse, rgba(255, 150, 180, 0.5), transparent 70%);
-    border-radius: 50%;
-}
-
-.left-blush {
-    left: 5%;
-}
-
-.right-blush {
-    right: 5%;
-}
-
-/* --- Mouth --- */
-.mouth {
-    position: absolute;
-    width: 16%;
-    height: 10%;
-    bottom: 18%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: transparent;
-    border: 2px solid transparent;
-    border-bottom: 2.5px solid #e88a8a;
-    border-radius: 0 0 50% 50%;
-}
-
-/* --- Hair Front Layer --- */
-.hair-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    height: 40%;
     top: 0;
-    left: 0;
-    z-index: 15;
-    pointer-events: none;
-}
-
-.bangs {
-    position: absolute;
-    width: 70%;
-    height: 35%;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, #d0ecff 0%, #aedcf7 50%, #8ccef0 100%);
-    border-radius: 50% 50% 60% 60% / 100% 100% 50% 50%;
-    z-index: 15;
-    box-shadow: 
-        inset 0 5px 15px rgba(255, 255, 255, 0.5),
-        inset 0 -3px 10px rgba(100, 180, 230, 0.3);
-}
-
-.bangs::before {
-    content: '';
-    position: absolute;
-    width: 25%;
-    height: 60%;
-    bottom: -20%;
-    left: 8%;
-    background: linear-gradient(180deg, #aedcf7, #7cc8f0);
-    border-radius: 0 0 50% 50%;
-    transform: rotate(10deg);
-}
-
-.bangs::after {
-    content: '';
-    position: absolute;
-    width: 25%;
-    height: 60%;
-    bottom: -20%;
-    right: 8%;
-    background: linear-gradient(180deg, #aedcf7, #7cc8f0);
-    border-radius: 0 0 50% 50%;
-    transform: rotate(-10deg);
-}
-
-.side-hair {
-    position: absolute;
-    width: 22%;
-    height: 50%;
-    top: 30%;
-    background: linear-gradient(180deg, #b8e2fa 0%, #8ccef0 50%, #6bc0eb 100%);
-    border-radius: 40% 40% 50% 50% / 30% 30% 70% 70%;
-    box-shadow: inset -2px 0 8px rgba(100, 180, 230, 0.4);
-}
-
-.left-side {
-    left: -5%;
-    transform: rotate(8deg);
-}
-
-.right-side {
-    right: -5%;
-    transform: rotate(-8deg);
-}
-
-/* --- Tiara / Crown --- */
-.tiara {
-    position: absolute;
-    width: 45%;
-    height: 18%;
-    top: 5%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
 }
 
-.tiara::before {
-    content: '';
+.tiara-band {
     position: absolute;
     width: 100%;
     height: 50%;
@@ -581,32 +763,21 @@ body {
     left: 0;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        #c0e8ff 20%, 
-        #e8f6ff 50%, 
-        #c0e8ff 80%, 
+        rgba(192, 232, 255, 0.8) 20%, 
+        rgba(232, 246, 255, 0.95) 50%, 
+        rgba(192, 232, 255, 0.8) 80%, 
         transparent 100%);
-    border-radius: 50% 50% 0 0;
-    box-shadow: 0 0 8px rgba(165, 242, 243, 0.8);
-}
-
-.tiara::after {
-    content: '';
-    position: absolute;
-    width: 20%;
-    height: 80%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(180deg, #fff, #c8e8ff);
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-    box-shadow: 0 0 10px rgba(165, 242, 243, 0.9);
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 12px rgba(165, 242, 243, 0.8);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 
 .tiara-gem {
     position: absolute;
-    width: 12%;
-    height: 35%;
-    top: 25%;
+    width: 25%;
+    height: 60%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     background: radial-gradient(circle at 30% 30%, 
@@ -615,51 +786,146 @@ body {
         #6b48ff 100%);
     border-radius: 50%;
     box-shadow: 
-        0 0 8px var(--primary-glow),
-        0 0 15px var(--secondary-glow);
+        0 0 10px var(--primary-glow),
+        0 0 20px var(--secondary-glow);
     animation: gem-pulse 2s ease-in-out infinite;
     z-index: 25;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.tiara-gem.side-gem {
+    width: 15%;
+    height: 40%;
+    top: 25%;
+    opacity: 0;
+}
+
+.tiara-gem.left-gem {
+    left: 15%;
+    transform: none;
+}
+
+.tiara-gem.right-gem {
+    left: auto;
+    right: 15%;
+    transform: none;
 }
 
 @keyframes gem-pulse {
     0%, 100% { 
-        box-shadow: 0 0 8px var(--primary-glow), 0 0 15px var(--secondary-glow);
+        box-shadow: 0 0 10px var(--primary-glow), 0 0 20px var(--secondary-glow);
         transform: translateX(-50%) scale(1);
     }
     50% { 
-        box-shadow: 0 0 15px var(--primary-glow), 0 0 25px var(--secondary-glow), 0 0 35px rgba(165, 242, 243, 0.3);
+        box-shadow: 0 0 20px var(--primary-glow), 0 0 35px var(--secondary-glow), 0 0 50px rgba(165, 242, 243, 0.3);
         transform: translateX(-50%) scale(1.1);
     }
 }
 
-/* --- Floating Snowflakes --- */
+/* --- Central Orb (Main Visual Focus) --- */
+.central-orb {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 15;
+}
+
+.orb-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #a5f2f3 30%, 
+        #6b48ff 70%, 
+        #3d1f80 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 15px var(--primary-glow),
+        0 0 30px var(--secondary-glow),
+        inset 0 0 15px rgba(255, 255, 255, 0.5);
+    animation: orb-glow 3s ease-in-out infinite;
+}
+
+.orb-ring {
+    position: absolute;
+    border: 2px solid rgba(165, 242, 243, 0.5);
+    border-radius: 50%;
+    animation: orb-ring-spin 8s linear infinite;
+}
+
+.orb-ring.r1 {
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    border-width: 1px;
+}
+
+.orb-ring.r2 {
+    width: 180%;
+    height: 180%;
+    top: -40%;
+    left: -40%;
+    border-width: 1px;
+    animation-direction: reverse;
+    animation-duration: 12s;
+    opacity: 0.5;
+}
+
+@keyframes orb-glow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 15px var(--primary-glow),
+            0 0 30px var(--secondary-glow);
+    }
+    50% { 
+        box-shadow: 
+            0 0 25px var(--primary-glow),
+            0 0 50px var(--secondary-glow),
+            0 0 75px rgba(165, 242, 243, 0.3);
+    }
+}
+
+@keyframes orb-ring-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- Floating Snowflakes (Equipment Display) --- */
 .snowflake {
     position: absolute;
     color: #fff;
-    text-shadow: 0 0 5px var(--primary-glow), 0 0 10px rgba(165, 242, 243, 0.5);
+    text-shadow: 0 0 8px var(--primary-glow), 0 0 15px rgba(165, 242, 243, 0.6);
     z-index: 30;
     pointer-events: none;
     animation: snowflake-float 3s ease-in-out infinite;
 }
 
 .sf1 {
-    font-size: 10px;
-    top: 0%;
-    left: 5%;
+    font-size: 12px;
+    top: -10%;
+    left: -15%;
     animation-delay: 0s;
 }
 
 .sf2 {
-    font-size: 8px;
-    top: 15%;
-    right: 0%;
+    font-size: 10px;
+    top: 20%;
+    right: -20%;
     animation-delay: 1s;
 }
 
 .sf3 {
-    font-size: 12px;
-    bottom: 10%;
-    left: -5%;
+    font-size: 14px;
+    bottom: 0%;
+    left: -20%;
     animation-delay: 2s;
 }
 
@@ -669,63 +935,848 @@ body {
         opacity: 0.7;
     }
     25% { 
-        transform: translateY(-3px) rotate(90deg); 
+        transform: translateY(-5px) rotate(90deg); 
         opacity: 1;
     }
     50% { 
-        transform: translateY(-5px) rotate(180deg); 
-        opacity: 0.8;
+        transform: translateY(-8px) rotate(180deg); 
+        opacity: 0.85;
     }
     75% { 
-        transform: translateY(-2px) rotate(270deg); 
+        transform: translateY(-3px) rotate(270deg); 
         opacity: 1;
     }
 }
 
-/* --- Level-based Character Variations --- */
 
-/* Level 0: Wandering Girl - Muted colors, no tiara */
-.freya-avatar[data-level="0"] .hair-back,
-.freya-avatar[data-level="0"] .hair-front .bangs,
-.freya-avatar[data-level="0"] .side-hair {
-    filter: saturate(0.6) brightness(0.85);
+/* --- Scarf (Early Levels - Floating Display) --- */
+.scarf {
+    position: absolute;
+    width: 80%;
+    height: 15px;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #ff6b6b, #ee5a5a, #ff6b6b);
+    border-radius: 10px;
+    z-index: 8;
+    box-shadow: 
+        inset 0 1px 3px rgba(255, 255, 255, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        0 0 15px rgba(255, 100, 100, 0.3);
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    animation: scarf-wave 3s ease-in-out infinite;
 }
 
-.freya-avatar[data-level="0"] .tiara {
+@keyframes scarf-wave {
+    0%, 100% { transform: translateX(-50%) rotate(-3deg); }
+    50% { transform: translateX(-50%) rotate(3deg); }
+}
+
+.scarf::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 4px,
+        rgba(255, 255, 255, 0.15) 4px,
+        rgba(255, 255, 255, 0.15) 5px
+    );
+    border-radius: 10px;
+}
+
+.scarf-end {
+    position: absolute;
+    width: 25%;
+    height: 50px;
+    top: 100%;
+    right: 5%;
+    background: linear-gradient(180deg, #ff6b6b, #dd4a4a);
+    border-radius: 0 0 8px 8px;
+    transform: rotate(-10deg);
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+    animation: scarf-end-wave 3s ease-in-out infinite 0.5s;
+}
+
+@keyframes scarf-end-wave {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(-5deg); }
+}
+
+.scarf-end::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 3px,
+        rgba(255, 255, 255, 0.15) 3px,
+        rgba(255, 255, 255, 0.15) 4px
+    );
+    border-radius: 0 0 8px 8px;
+}
+
+/* --- Cape / Cloak (Flowing behind - Equipment Display) --- */
+.cape {
+    position: absolute;
+    width: 160%;
+    height: 100%;
+    top: 20%;
+    left: -30%;
+    background: linear-gradient(180deg, 
+        rgba(75, 0, 130, 0.85) 0%, 
+        rgba(45, 0, 80, 0.9) 50%, 
+        rgba(25, 0, 50, 0.95) 100%);
+    border-radius: 50% 50% 45% 45% / 30% 30% 50% 50%;
+    z-index: 0;
+    box-shadow: 
+        inset 0 5px 25px rgba(138, 43, 226, 0.4),
+        0 8px 25px rgba(0, 0, 0, 0.5);
     opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: cape-flow 4s ease-in-out infinite;
 }
 
-.freya-avatar[data-level="0"] .snowflake {
-    opacity: 0.3;
+@keyframes cape-flow {
+    0%, 100% { transform: scaleX(1) skewY(0deg); }
+    50% { transform: scaleX(1.05) skewY(1deg); }
 }
 
-/* Level 1-2: Awakening - Tiara appears */
-.freya-avatar[data-level="1"] .tiara,
-.freya-avatar[data-level="2"] .tiara {
-    opacity: 0.7;
+.cape-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(165, 242, 243, 0.12) 0%, transparent 15%),
+        radial-gradient(circle at 80% 40%, rgba(165, 242, 243, 0.1) 0%, transparent 12%),
+        radial-gradient(circle at 50% 60%, rgba(165, 242, 243, 0.08) 0%, transparent 20%),
+        radial-gradient(circle at 30% 80%, rgba(165, 242, 243, 0.06) 0%, transparent 15%);
+    border-radius: inherit;
 }
 
-/* Level 3-4: Space Walker - Purple tint */
-.freya-avatar[data-level="3"] .tiara-gem,
-.freya-avatar[data-level="4"] .tiara-gem {
+/* --- Wings (Equipment Display - Centered) --- */
+.wings {
+    position: absolute;
+    width: 280%;
+    height: 100%;
+    top: 0;
+    left: -90%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.wing {
+    position: absolute;
+    width: 45%;
+    height: 100%;
+    top: 0;
+    background: linear-gradient(135deg, 
+        rgba(165, 242, 243, 0.5) 0%, 
+        rgba(165, 242, 243, 0.25) 50%, 
+        rgba(165, 242, 243, 0.1) 100%);
+    box-shadow: 
+        inset 0 0 15px rgba(165, 242, 243, 0.4),
+        0 0 12px rgba(165, 242, 243, 0.3);
+}
+
+.left-wing {
+    left: 0;
+    border-radius: 80% 20% 70% 30% / 60% 40% 60% 40%;
+    transform: rotate(-15deg);
+    transform-origin: right center;
+    animation: wing-flutter-left 2.5s ease-in-out infinite;
+}
+
+.right-wing {
+    right: 0;
+    border-radius: 20% 80% 30% 70% / 40% 60% 40% 60%;
+    transform: rotate(15deg);
+    transform-origin: left center;
+    animation: wing-flutter-right 2.5s ease-in-out infinite;
+}
+
+.wing-feather {
+    position: absolute;
+    background: linear-gradient(135deg, 
+        rgba(165, 242, 243, 0.4) 0%, 
+        rgba(165, 242, 243, 0.1) 100%);
+}
+
+.left-wing .wing-feather.wf1 {
+    width: 60%;
+    height: 30%;
+    top: 10%;
+    left: 5%;
+    border-radius: 80% 20% 70% 30%;
+    transform: rotate(-10deg);
+}
+
+.left-wing .wing-feather.wf2 {
+    width: 70%;
+    height: 25%;
+    top: 35%;
+    left: 10%;
+    border-radius: 80% 20% 70% 30%;
+}
+
+.left-wing .wing-feather.wf3 {
+    width: 50%;
+    height: 20%;
+    bottom: 15%;
+    left: 15%;
+    border-radius: 80% 20% 70% 30%;
+    transform: rotate(5deg);
+}
+
+.right-wing .wing-feather.wf1 {
+    width: 60%;
+    height: 30%;
+    top: 10%;
+    right: 5%;
+    border-radius: 20% 80% 30% 70%;
+    transform: rotate(10deg);
+}
+
+.right-wing .wing-feather.wf2 {
+    width: 70%;
+    height: 25%;
+    top: 35%;
+    right: 10%;
+    border-radius: 20% 80% 30% 70%;
+}
+
+.right-wing .wing-feather.wf3 {
+    width: 50%;
+    height: 20%;
+    bottom: 15%;
+    right: 15%;
+    border-radius: 20% 80% 30% 70%;
+    transform: rotate(-5deg);
+}
+
+@keyframes wing-flutter-left {
+    0%, 100% { transform: rotate(-15deg) scaleX(1); }
+    50% { transform: rotate(-20deg) scaleX(0.95); }
+}
+
+@keyframes wing-flutter-right {
+    0%, 100% { transform: rotate(15deg) scaleX(1); }
+    50% { transform: rotate(20deg) scaleX(0.95); }
+}
+
+/* --- Magic Staff (Equipment Display - Right Side) --- */
+.magic-staff {
+    position: absolute;
+    width: 25px;
+    height: 100px;
+    top: 10%;
+    right: -20px;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transform: rotate(20deg);
+    transform-origin: bottom center;
+    animation: staff-hover 3s ease-in-out infinite;
+}
+
+@keyframes staff-hover {
+    0%, 100% { transform: rotate(20deg) translateY(0); }
+    50% { transform: rotate(18deg) translateY(-5px); }
+}
+
+.staff-shaft {
+    position: absolute;
+    width: 6px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, 
+        #6a5020 0%, 
+        #8b6914 30%, 
+        #c49b00 50%, 
+        #8b6914 70%, 
+        #6a5020 100%);
+    border-radius: 3px;
+    box-shadow: 
+        inset 1px 0 2px rgba(255, 255, 255, 0.3),
+        2px 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.staff-head {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    top: -8%;
+    left: 0;
+}
+
+.staff-orb {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #a5f2f3 25%, 
+        #6b48ff 60%, 
+        #4a2eb8 100%);
+    border-radius: 50%;
+    box-shadow: 
+        0 0 12px var(--primary-glow),
+        0 0 25px var(--secondary-glow);
+    animation: staff-orb-glow 2s ease-in-out infinite;
+}
+
+@keyframes staff-orb-glow {
+    0%, 100% { 
+        box-shadow: 0 0 12px var(--primary-glow), 0 0 25px var(--secondary-glow);
+    }
+    50% { 
+        box-shadow: 0 0 20px var(--primary-glow), 0 0 40px var(--secondary-glow), 0 0 60px rgba(165, 242, 243, 0.4);
+    }
+}
+
+.staff-wings {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    top: 50%;
+    left: 0;
+}
+
+.staff-wing {
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    background: linear-gradient(180deg, 
+        rgba(200, 232, 255, 0.85) 0%, 
+        rgba(165, 242, 243, 0.5) 100%);
+}
+
+.staff-wing.sw-left {
+    left: -8px;
+    border-radius: 80% 20% 60% 40%;
+    transform: rotate(-25deg);
+}
+
+.staff-wing.sw-right {
+    right: -8px;
+    border-radius: 20% 80% 40% 60%;
+    transform: rotate(25deg);
+}
+
+/* --- Magic Particles (Equipment Display) --- */
+.magic-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--primary-glow);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--primary-glow), 0 0 15px var(--secondary-glow);
+    opacity: 0;
+    z-index: 35;
+    pointer-events: none;
+}
+
+.mp1 {
+    top: 10%;
+    right: -25%;
+    animation: particle-orbit 4s ease-in-out infinite;
+}
+
+.mp2 {
+    top: 60%;
+    left: -25%;
+    animation: particle-orbit 4s ease-in-out infinite 1s;
+}
+
+.mp3 {
+    top: 30%;
+    right: -30%;
+    animation: particle-orbit 4s ease-in-out infinite 2s;
+}
+
+.mp4 {
+    bottom: 10%;
+    left: -20%;
+    animation: particle-orbit 4s ease-in-out infinite 3s;
+}
+
+@keyframes particle-orbit {
+    0%, 100% { 
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    20% { 
+        transform: translateY(-10px) scale(1.2);
+        opacity: 1;
+    }
+    50% { 
+        transform: translateY(-20px) translateX(5px) scale(1);
+        opacity: 0.8;
+    }
+    80% { 
+        transform: translateY(-25px) translateX(-5px) scale(0.6);
+        opacity: 0.4;
+    }
+}
+
+/* ========================================
+   White Cat Pet
+   ======================================== */
+
+.pet-cat {
+    position: absolute;
+    width: 40px;
+    height: 35px;
+    bottom: -5px;
+    left: -25px;
+    z-index: 30;
+    animation: cat-idle 3s ease-in-out infinite;
+}
+
+@keyframes cat-idle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.cat-body {
+    position: absolute;
+    width: 100%;
+    height: 60%;
+    bottom: 15%;
+    left: 0;
+    background: linear-gradient(180deg, 
+        #ffffff 0%, 
+        #f5f5f5 50%, 
+        #e8e8e8 100%);
+    border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+    box-shadow: 
+        inset -3px -3px 8px rgba(200, 200, 200, 0.3),
+        0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.cat-tail {
+    position: absolute;
+    width: 60%;
+    height: 25%;
+    bottom: 20%;
+    right: -40%;
+    background: linear-gradient(90deg, #f0f0f0, #ffffff);
+    border-radius: 50% 80% 80% 50%;
+    transform: rotate(-15deg);
+    transform-origin: left center;
+    animation: tail-wag 2s ease-in-out infinite;
+}
+
+@keyframes tail-wag {
+    0%, 100% { transform: rotate(-15deg); }
+    50% { transform: rotate(-5deg); }
+}
+
+.cat-head {
+    position: absolute;
+    width: 70%;
+    height: 55%;
+    top: 0;
+    left: 15%;
+    z-index: 2;
+}
+
+.cat-ear {
+    position: absolute;
+    width: 35%;
+    height: 45%;
+    top: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.cat-ear::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    top: 30%;
+    left: 20%;
+    background: linear-gradient(180deg, #ffcccc 0%, #ffaaaa 100%);
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.left-ear {
+    left: 5%;
+    transform: rotate(-15deg);
+}
+
+.right-ear {
+    right: 5%;
+    transform: rotate(15deg);
+}
+
+.cat-face {
+    position: absolute;
+    width: 100%;
+    height: 80%;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(180deg, 
+        #ffffff 0%, 
+        #fafafa 50%, 
+        #f0f0f0 100%);
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cat-eye {
+    position: absolute;
+    width: 22%;
+    height: 25%;
+    top: 35%;
+    background: #222;
+    border-radius: 50%;
+    animation: cat-blink 4s ease-in-out infinite;
+}
+
+.cat-eye::before {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    top: 20%;
+    left: 25%;
+    background: #fff;
+    border-radius: 50%;
+}
+
+.left-cat-eye { left: 20%; }
+.right-cat-eye { right: 20%; }
+
+@keyframes cat-blink {
+    0%, 45%, 55%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+}
+
+.cat-nose {
+    position: absolute;
+    width: 12%;
+    height: 10%;
+    top: 55%;
+    left: 44%;
+    background: #ffaaaa;
+    border-radius: 50% 50% 40% 40%;
+}
+
+.cat-mouth {
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    top: 62%;
+    left: 40%;
+}
+
+.cat-mouth::before,
+.cat-mouth::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    border-bottom: 1.5px solid #ccc;
+    border-radius: 0 0 50% 50%;
+}
+
+.cat-mouth::before { left: 0; }
+.cat-mouth::after { right: 0; }
+
+.cat-whisker {
+    position: absolute;
+    width: 45%;
+    height: 1px;
+    top: 58%;
+    background: #ccc;
+}
+
+.cat-whisker::before,
+.cat-whisker::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+}
+
+.cat-whisker::before { top: -4px; }
+.cat-whisker::after { top: 4px; }
+
+.left-whisker {
+    left: -35%;
+    transform: rotate(-5deg);
+}
+
+.right-whisker {
+    right: -35%;
+    transform: rotate(5deg);
+}
+
+.cat-paws {
+    position: absolute;
+    width: 80%;
+    height: 20%;
+    bottom: 0;
+    left: 10%;
+    z-index: 3;
+}
+
+.cat-paw {
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    bottom: 0;
+    background: linear-gradient(180deg, #f5f5f5, #e8e8e8);
+    border-radius: 50%;
+}
+
+.front-left { left: 15%; }
+.front-right { right: 15%; }
+
+/* Cat Accessories (Evolve with level) */
+.cat-accessory {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.cat-bow {
+    position: absolute;
+    width: 25%;
+    height: 20%;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.cat-bow::before {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    left: 0;
+    background: #ff6b9d;
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(-30deg);
+}
+
+.cat-bow::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 80%;
+    right: 0;
+    background: #ff6b9d;
+    border-radius: 0 50% 50% 50%;
+    transform: rotate(30deg);
+}
+
+.cat-halo {
+    position: absolute;
+    width: 50%;
+    height: 15%;
+    top: -10%;
+    left: 25%;
+    border: 2px solid rgba(255, 215, 0, 0);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.cat-wings {
+    position: absolute;
+    width: 150%;
+    height: 40%;
+    top: 30%;
+    left: -25%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.cat-wing {
+    position: absolute;
+    width: 35%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(255, 215, 0, 0.6) 0%, 
+        rgba(255, 235, 150, 0.3) 100%);
+    border-radius: 80% 20% 60% 40%;
+}
+
+.cat-wing.cw-left {
+    left: 0;
+    transform: rotate(-20deg);
+}
+
+.cat-wing.cw-right {
+    right: 0;
+    border-radius: 20% 80% 40% 60%;
+    transform: rotate(20deg);
+}
+
+/* --- Level-based Equipment Variations --- */
+
+/* ====== LEVEL 0: Wandering Girl ====== */
+/* Only scarf visible, everything else hidden */
+.equipment-container[data-level="0"] .tiara-display { opacity: 0; }
+.equipment-container[data-level="0"] .tiara-band { opacity: 0; }
+.equipment-container[data-level="0"] .tiara-gem { opacity: 0; }
+.equipment-container[data-level="0"] .central-orb { opacity: 0.3; }
+.equipment-container[data-level="0"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        rgba(255, 255, 255, 0.5) 0%, 
+        rgba(150, 160, 170, 0.4) 50%, 
+        rgba(100, 110, 120, 0.3) 100%);
+    box-shadow: 0 0 8px rgba(150, 160, 180, 0.3);
+}
+.equipment-container[data-level="0"] .orb-ring { opacity: 0.2; }
+.equipment-container[data-level="0"] .snowflake { opacity: 0.3; }
+.equipment-container[data-level="0"] .scarf { opacity: 1; }
+.equipment-container[data-level="0"] .cape { opacity: 0; }
+.equipment-container[data-level="0"] .wings { opacity: 0; }
+.equipment-container[data-level="0"] .magic-staff { opacity: 0; }
+.equipment-container[data-level="0"] .magic-particle { opacity: 0; }
+.equipment-container[data-level="0"] .pet-cat { opacity: 0.7; }
+.equipment-container[data-level="0"] .cat-bow { opacity: 0; }
+.equipment-container[data-level="0"] .cat-halo { opacity: 0; }
+.equipment-container[data-level="0"] .cat-wings { opacity: 0; }
+
+/* ====== LEVEL 1-2: Awakening ====== */
+/* Orb brightens, staff starts appearing, tiara faint */
+.equipment-container[data-level="1"] .tiara-gem,
+.equipment-container[data-level="2"] .tiara-gem {
+    opacity: 0.5;
+}
+
+.equipment-container[data-level="1"] .central-orb,
+.equipment-container[data-level="2"] .central-orb {
+    opacity: 0.6;
+}
+
+.equipment-container[data-level="1"] .orb-inner,
+.equipment-container[data-level="2"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #a5f2f3 40%, 
+        #6b48ff 80%, 
+        #3d1f80 100%);
+}
+
+.equipment-container[data-level="1"] .scarf,
+.equipment-container[data-level="2"] .scarf {
+    opacity: 0.8;
+}
+
+.equipment-container[data-level="1"] .cat-bow,
+.equipment-container[data-level="2"] .cat-bow { opacity: 0; }
+
+.equipment-container[data-level="1"] .magic-staff,
+.equipment-container[data-level="2"] .magic-staff { opacity: 0.4; }
+
+.equipment-container[data-level="1"] .staff-shaft,
+.equipment-container[data-level="2"] .staff-shaft {
+    background: linear-gradient(90deg, #6a5020, #8b6914, #6a5020);
+}
+
+/* ====== LEVEL 3-4: Space Walker ====== */
+/* Cape appears, scarf fades, purple theme, cat gets bow */
+.equipment-container[data-level="3"] .tiara-gem,
+.equipment-container[data-level="4"] .tiara-gem {
+    opacity: 0.8;
     background: radial-gradient(circle at 30% 30%, 
         #fff 0%, 
         #ff79c6 40%, 
         #bd93f9 100%);
 }
 
-.freya-avatar[data-level="3"] .pupil,
-.freya-avatar[data-level="4"] .pupil {
-    background: radial-gradient(circle at 40% 30%, 
-        #e8c8ff 0%, 
-        #bd93f9 30%, 
-        #8b5cf6 70%, 
+.equipment-container[data-level="3"] .tiara-band,
+.equipment-container[data-level="4"] .tiara-band {
+    opacity: 0.6;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(189, 147, 249, 0.7) 20%, 
+        rgba(255, 121, 198, 0.8) 50%, 
+        rgba(189, 147, 249, 0.7) 80%, 
+        transparent 100%);
+}
+
+.equipment-container[data-level="3"] .central-orb,
+.equipment-container[data-level="4"] .central-orb {
+    opacity: 0.85;
+}
+
+.equipment-container[data-level="3"] .orb-inner,
+.equipment-container[data-level="4"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #ff79c6 30%, 
+        #bd93f9 60%, 
         #5b3a99 100%);
 }
 
-/* Level 5-6: Alchemy - Red/Pink accents */
-.freya-avatar[data-level="5"] .tiara-gem,
-.freya-avatar[data-level="6"] .tiara-gem {
+.equipment-container[data-level="3"] .orb-ring,
+.equipment-container[data-level="4"] .orb-ring {
+    border-color: rgba(189, 147, 249, 0.6);
+}
+
+.equipment-container[data-level="3"] .scarf,
+.equipment-container[data-level="4"] .scarf {
+    opacity: 0;
+}
+
+.equipment-container[data-level="3"] .cape,
+.equipment-container[data-level="4"] .cape {
+    opacity: 0.7;
+    background: linear-gradient(180deg, 
+        rgba(189, 147, 249, 0.8) 0%, 
+        rgba(139, 92, 246, 0.9) 50%, 
+        rgba(91, 58, 153, 1) 100%);
+}
+
+.equipment-container[data-level="3"] .magic-staff,
+.equipment-container[data-level="4"] .magic-staff {
+    opacity: 0.75;
+}
+
+.equipment-container[data-level="3"] .staff-orb,
+.equipment-container[data-level="4"] .staff-orb {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #bd93f9 40%, 
+        #8b5cf6 100%);
+}
+
+/* Cat gets a bow at level 3-5 */
+.equipment-container[data-level="3"] .cat-bow,
+.equipment-container[data-level="4"] .cat-bow,
+.equipment-container[data-level="5"] .cat-bow {
+    opacity: 1;
+}
+
+/* ====== LEVEL 5-6: Alchemy ====== */
+/* Red/cyan accents, magic particles active */
+.equipment-container[data-level="5"] .tiara-gem,
+.equipment-container[data-level="6"] .tiara-gem {
+    opacity: 1;
     background: radial-gradient(circle at 30% 30%, 
         #fff 0%, 
         #ff5555 40%, 
@@ -735,94 +1786,308 @@ body {
 
 @keyframes gem-pulse-fast {
     0%, 100% { 
-        box-shadow: 0 0 10px #ff5555, 0 0 20px #8be9fd;
+        box-shadow: 0 0 12px #ff5555, 0 0 24px #8be9fd;
         transform: translateX(-50%) scale(1);
     }
     50% { 
-        box-shadow: 0 0 20px #ff5555, 0 0 35px #8be9fd, 0 0 50px rgba(255, 85, 85, 0.3);
-        transform: translateX(-50%) scale(1.15);
+        box-shadow: 0 0 20px #ff5555, 0 0 35px #8be9fd, 0 0 50px rgba(255, 85, 85, 0.4);
+        transform: translateX(-50%) scale(1.1);
     }
 }
 
-/* Level 7-8: Perfect Circle - Yellow/Cyan glow */
-.freya-avatar[data-level="7"] .hair-back,
-.freya-avatar[data-level="7"] .hair-front .bangs,
-.freya-avatar[data-level="7"] .side-hair,
-.freya-avatar[data-level="8"] .hair-back,
-.freya-avatar[data-level="8"] .hair-front .bangs,
-.freya-avatar[data-level="8"] .side-hair {
-    background: linear-gradient(180deg, #e8fff8 0%, #a5f2f3 50%, #6be9fd 100%);
+.equipment-container[data-level="5"] .tiara-band,
+.equipment-container[data-level="6"] .tiara-band {
+    opacity: 0.8;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(139, 233, 253, 0.7) 20%, 
+        rgba(255, 85, 85, 0.8) 50%, 
+        rgba(139, 233, 253, 0.7) 80%, 
+        transparent 100%);
 }
 
-.freya-avatar[data-level="7"] .tiara-gem,
-.freya-avatar[data-level="8"] .tiara-gem {
+.equipment-container[data-level="5"] .central-orb,
+.equipment-container[data-level="6"] .central-orb {
+    opacity: 1;
+}
+
+.equipment-container[data-level="5"] .orb-inner,
+.equipment-container[data-level="6"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #ff5555 25%, 
+        #8be9fd 60%, 
+        #4a8aad 100%);
+}
+
+.equipment-container[data-level="5"] .orb-ring,
+.equipment-container[data-level="6"] .orb-ring {
+    border-color: rgba(255, 85, 85, 0.6);
+}
+
+.equipment-container[data-level="5"] .scarf,
+.equipment-container[data-level="6"] .scarf {
+    opacity: 0;
+}
+
+.equipment-container[data-level="5"] .cape,
+.equipment-container[data-level="6"] .cape {
+    opacity: 0.85;
+    background: linear-gradient(180deg, 
+        rgba(139, 233, 253, 0.8) 0%, 
+        rgba(75, 150, 180, 0.9) 50%, 
+        rgba(30, 80, 100, 1) 100%);
+}
+
+.equipment-container[data-level="5"] .magic-staff,
+.equipment-container[data-level="6"] .magic-staff {
+    opacity: 1;
+}
+
+.equipment-container[data-level="5"] .staff-orb,
+.equipment-container[data-level="6"] .staff-orb {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #ff5555 30%, 
+        #8be9fd 70%, 
+        #4a8aad 100%);
+}
+
+.equipment-container[data-level="5"] .magic-particle,
+.equipment-container[data-level="6"] .magic-particle {
+    background: #ff5555;
+    box-shadow: 0 0 5px #ff5555, 0 0 10px #8be9fd;
+    opacity: 1;
+}
+
+/* Cat halo appears at level 6+ */
+.equipment-container[data-level="6"] .cat-halo,
+.equipment-container[data-level="7"] .cat-halo,
+.equipment-container[data-level="8"] .cat-halo {
+    opacity: 1;
+    border-color: rgba(139, 233, 253, 0.8);
+    box-shadow: 0 0 8px rgba(139, 233, 253, 0.5);
+}
+
+/* ====== LEVEL 7-8: Perfect Circle ====== */
+/* Wings forming, yellow/cyan theme */
+.equipment-container[data-level="7"] .tiara-gem,
+.equipment-container[data-level="8"] .tiara-gem {
+    opacity: 1;
     background: radial-gradient(circle at 30% 30%, 
         #fff 0%, 
         #f1fa8c 40%, 
         #ff79c6 100%);
 }
 
-.freya-avatar[data-level="7"] .pupil,
-.freya-avatar[data-level="8"] .pupil {
-    background: radial-gradient(circle at 40% 30%, 
-        #ffffc8 0%, 
+.equipment-container[data-level="7"] .tiara-band,
+.equipment-container[data-level="8"] .tiara-band {
+    opacity: 1;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(241, 250, 140, 0.8) 20%, 
+        rgba(165, 242, 243, 0.9) 50%, 
+        rgba(241, 250, 140, 0.8) 80%, 
+        transparent 100%);
+}
+
+.equipment-container[data-level="7"] .tiara-gem.side-gem,
+.equipment-container[data-level="8"] .tiara-gem.side-gem {
+    opacity: 0.7;
+}
+
+.equipment-container[data-level="7"] .central-orb,
+.equipment-container[data-level="8"] .central-orb {
+    opacity: 1;
+}
+
+.equipment-container[data-level="7"] .orb-inner,
+.equipment-container[data-level="8"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #f1fa8c 25%, 
+        #a5f2f3 60%, 
+        #50b4be 100%);
+}
+
+.equipment-container[data-level="7"] .orb-ring,
+.equipment-container[data-level="8"] .orb-ring {
+    border-color: rgba(241, 250, 140, 0.7);
+}
+
+.equipment-container[data-level="7"] .scarf,
+.equipment-container[data-level="8"] .scarf {
+    opacity: 0;
+}
+
+.equipment-container[data-level="7"] .cape,
+.equipment-container[data-level="8"] .cape {
+    opacity: 0.9;
+    background: linear-gradient(180deg, 
+        rgba(241, 250, 140, 0.7) 0%, 
+        rgba(165, 242, 243, 0.85) 50%, 
+        rgba(80, 180, 190, 1) 100%);
+}
+
+.equipment-container[data-level="7"] .wings,
+.equipment-container[data-level="8"] .wings {
+    opacity: 0.6;
+}
+
+.equipment-container[data-level="7"] .wing,
+.equipment-container[data-level="8"] .wing {
+    background: linear-gradient(135deg, 
+        rgba(241, 250, 140, 0.5) 0%, 
+        rgba(165, 242, 243, 0.35) 50%, 
+        rgba(165, 242, 243, 0.15) 100%);
+}
+
+.equipment-container[data-level="7"] .magic-staff,
+.equipment-container[data-level="8"] .magic-staff {
+    opacity: 1;
+}
+
+.equipment-container[data-level="7"] .staff-shaft,
+.equipment-container[data-level="8"] .staff-shaft {
+    background: linear-gradient(90deg, #a08030, #c49b00, #a08030);
+}
+
+.equipment-container[data-level="7"] .staff-orb,
+.equipment-container[data-level="8"] .staff-orb {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
         #f1fa8c 30%, 
-        #a8c256 70%, 
-        #5a6b2d 100%);
+        #a5f2f3 70%, 
+        #50b4be 100%);
 }
 
-/* Level 9: Prophet - Orange/Butterfly glow */
-.freya-avatar[data-level="9"] .hair-back,
-.freya-avatar[data-level="9"] .hair-front .bangs,
-.freya-avatar[data-level="9"] .side-hair {
-    background: linear-gradient(180deg, #fff5e6 0%, #ffcf9f 50%, #ffb86c 100%);
+.equipment-container[data-level="7"] .magic-particle,
+.equipment-container[data-level="8"] .magic-particle {
+    background: #f1fa8c;
+    box-shadow: 0 0 5px #f1fa8c, 0 0 10px #a5f2f3;
+    opacity: 1;
 }
 
-.freya-avatar[data-level="9"] .tiara-gem {
+/* ====== LEVEL 9: Prophet ====== */
+/* Full wings, orange/butterfly theme */
+.equipment-container[data-level="9"] .tiara-gem {
+    opacity: 1;
     background: radial-gradient(circle at 30% 30%, 
         #fff 0%, 
         #ffb86c 40%, 
         #ff79c6 100%);
 }
 
-.freya-avatar[data-level="9"] .snowflake {
-    content: '🦋';
-    color: #ffb86c;
-    text-shadow: 0 0 8px #ffb86c, 0 0 15px rgba(255, 184, 108, 0.6);
-}
-
-.freya-avatar[data-level="9"] .pupil {
-    background: radial-gradient(circle at 40% 30%, 
-        #ffe8c8 0%, 
-        #ffb86c 30%, 
-        #c78a45 70%, 
-        #8b5e2d 100%);
-}
-
-/* Level 10: All-knowing Winter God - Full Golden Ascension */
-.freya-avatar[data-level="10"] .hair-back,
-.freya-avatar[data-level="10"] .hair-front .bangs,
-.freya-avatar[data-level="10"] .side-hair {
-    background: linear-gradient(180deg, #fff5d4 0%, #ffeaa7 50%, #ffd700 100%);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-}
-
-.freya-avatar[data-level="10"] .tiara::before {
+.equipment-container[data-level="9"] .tiara-band {
+    opacity: 1;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        #ffd700 20%, 
-        #fff5b0 50%, 
-        #ffd700 80%, 
+        rgba(255, 184, 108, 0.85) 20%, 
+        rgba(255, 121, 198, 0.9) 50%, 
+        rgba(255, 184, 108, 0.85) 80%, 
+        transparent 100%);
+}
+
+.equipment-container[data-level="9"] .tiara-gem.side-gem {
+    opacity: 0.85;
+}
+
+.equipment-container[data-level="9"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #ffb86c 25%, 
+        #ff79c6 60%, 
+        #c050a0 100%);
+}
+
+.equipment-container[data-level="9"] .orb-ring {
+    border-color: rgba(255, 184, 108, 0.7);
+}
+
+.equipment-container[data-level="9"] .snowflake {
+    color: #ffb86c;
+    text-shadow: 0 0 6px #ffb86c, 0 0 12px rgba(255, 184, 108, 0.6);
+}
+
+.equipment-container[data-level="9"] .scarf {
+    opacity: 0;
+}
+
+.equipment-container[data-level="9"] .cape {
+    opacity: 1;
+    background: linear-gradient(180deg, 
+        rgba(255, 184, 108, 0.8) 0%, 
+        rgba(255, 121, 198, 0.85) 50%, 
+        rgba(180, 80, 140, 1) 100%);
+}
+
+.equipment-container[data-level="9"] .wings {
+    opacity: 0.85;
+}
+
+.equipment-container[data-level="9"] .wing {
+    background: linear-gradient(135deg, 
+        rgba(255, 184, 108, 0.6) 0%, 
+        rgba(255, 121, 198, 0.4) 50%, 
+        rgba(255, 184, 108, 0.2) 100%);
+    box-shadow: 
+        inset 0 0 20px rgba(255, 184, 108, 0.5),
+        0 0 15px rgba(255, 121, 198, 0.4);
+}
+
+.equipment-container[data-level="9"] .magic-staff {
+    opacity: 1;
+}
+
+.equipment-container[data-level="9"] .staff-shaft {
+    background: linear-gradient(90deg, #8a5520, #b87333, #cd853f, #b87333, #8a5520);
+}
+
+.equipment-container[data-level="9"] .staff-orb {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #ffb86c 30%, 
+        #ff79c6 70%, 
+        #c050a0 100%);
+}
+
+.equipment-container[data-level="9"] .magic-particle {
+    background: #ffb86c;
+    box-shadow: 0 0 5px #ffb86c, 0 0 10px #ff79c6;
+    opacity: 1;
+}
+
+/* Cat gets golden halo at level 9 */
+.equipment-container[data-level="9"] .cat-halo {
+    opacity: 1;
+    border-color: rgba(255, 184, 108, 0.9);
+    box-shadow: 0 0 10px rgba(255, 184, 108, 0.6);
+}
+
+.equipment-container[data-level="9"] .cat-bow {
+    opacity: 1;
+}
+
+.equipment-container[data-level="9"] .cat-bow::before,
+.equipment-container[data-level="9"] .cat-bow::after {
+    background: #ffb86c;
+}
+
+/* ====== LEVEL 10: All-knowing Winter God ====== */
+/* Full Golden Divine Ascension - Ultimate power */
+.equipment-container[data-level="10"] .tiara-band {
+    opacity: 1;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.9) 20%, 
+        rgba(255, 245, 176, 0.95) 50%, 
+        rgba(255, 215, 0, 0.9) 80%, 
         transparent 100%);
     box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
 }
 
-.freya-avatar[data-level="10"] .tiara::after {
-    background: linear-gradient(180deg, #fff, #ffd700);
-    box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
-}
-
-.freya-avatar[data-level="10"] .tiara-gem {
+.equipment-container[data-level="10"] .tiara-gem {
+    opacity: 1;
     background: radial-gradient(circle at 30% 30%, 
         #fff 0%, 
         #ffd700 40%, 
@@ -833,43 +2098,160 @@ body {
     animation: gem-pulse-golden 2s ease-in-out infinite;
 }
 
+.equipment-container[data-level="10"] .tiara-gem.side-gem {
+    opacity: 1;
+}
+
 @keyframes gem-pulse-golden {
     0%, 100% { 
         box-shadow: 0 0 15px #ffd700, 0 0 30px rgba(255, 215, 0, 0.8);
         transform: translateX(-50%) scale(1);
     }
     50% { 
-        box-shadow: 0 0 25px #ffd700, 0 0 50px rgba(255, 215, 0, 0.9), 0 0 70px rgba(255, 215, 0, 0.4);
-        transform: translateX(-50%) scale(1.2);
+        box-shadow: 0 0 25px #ffd700, 0 0 50px rgba(255, 215, 0, 0.9), 0 0 75px rgba(255, 215, 0, 0.5);
+        transform: translateX(-50%) scale(1.15);
     }
 }
 
-.freya-avatar[data-level="10"] .snowflake {
+.equipment-container[data-level="10"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #ffd700 20%, 
+        #ff9500 50%, 
+        #c47000 100%);
+    box-shadow: 
+        0 0 25px #ffd700,
+        0 0 50px rgba(255, 215, 0, 0.8),
+        0 0 75px rgba(255, 149, 0, 0.5),
+        inset 0 0 20px rgba(255, 255, 255, 0.6);
+}
+
+.equipment-container[data-level="10"] .orb-ring {
+    border-color: rgba(255, 215, 0, 0.8);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.equipment-container[data-level="10"] .snowflake {
     color: #ffd700;
-    text-shadow: 0 0 8px #ffd700, 0 0 15px rgba(255, 215, 0, 0.6);
+    text-shadow: 0 0 8px #ffd700, 0 0 16px rgba(255, 215, 0, 0.7);
 }
 
-.freya-avatar[data-level="10"] .pupil {
-    background: radial-gradient(circle at 40% 30%, 
-        #ffeaa7 0%, 
-        #ffd700 30%, 
-        #c49b00 70%, 
-        #8b6914 100%);
+/* Golden Scarf hidden */
+.equipment-container[data-level="10"] .scarf {
+    opacity: 0;
 }
 
-.freya-avatar[data-level="10"] .blush {
-    background: radial-gradient(ellipse, rgba(255, 200, 150, 0.5), transparent 70%);
+/* Divine Golden Cape */
+.equipment-container[data-level="10"] .cape {
+    opacity: 1;
+    background: linear-gradient(180deg, 
+        rgba(255, 215, 0, 0.9) 0%, 
+        rgba(218, 165, 32, 0.95) 50%, 
+        rgba(139, 105, 20, 1) 100%);
+    box-shadow: 
+        inset 0 5px 30px rgba(255, 255, 200, 0.4),
+        0 8px 30px rgba(255, 215, 0, 0.5);
+}
+
+.equipment-container[data-level="10"] .cape-pattern {
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.35) 0%, transparent 15%),
+        radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.3) 0%, transparent 12%),
+        radial-gradient(circle at 50% 60%, rgba(255, 255, 255, 0.25) 0%, transparent 18%),
+        radial-gradient(circle at 30% 80%, rgba(255, 255, 255, 0.2) 0%, transparent 12%);
+}
+
+/* Divine Golden Wings */
+.equipment-container[data-level="10"] .wings {
+    opacity: 1;
+}
+
+.equipment-container[data-level="10"] .wing {
+    background: linear-gradient(135deg, 
+        rgba(255, 215, 0, 0.7) 0%, 
+        rgba(255, 235, 150, 0.5) 30%, 
+        rgba(255, 215, 0, 0.3) 60%, 
+        rgba(255, 215, 0, 0.1) 100%);
+    box-shadow: 
+        inset 0 0 30px rgba(255, 215, 0, 0.6),
+        0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+.equipment-container[data-level="10"] .wing-feather {
+    background: linear-gradient(135deg, 
+        rgba(255, 235, 150, 0.6) 0%, 
+        rgba(255, 215, 0, 0.3) 100%);
+}
+
+/* Golden Staff */
+.equipment-container[data-level="10"] .magic-staff {
+    opacity: 1;
+}
+
+.equipment-container[data-level="10"] .staff-shaft {
+    background: linear-gradient(90deg, #c49b00, #ffd700, #ffeb80, #ffd700, #c49b00);
+    box-shadow: 
+        inset 1px 0 3px rgba(255, 255, 255, 0.5),
+        0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+.equipment-container[data-level="10"] .staff-orb {
+    background: radial-gradient(circle at 35% 35%, 
+        #fff 0%, 
+        #ffd700 20%, 
+        #ff9500 50%, 
+        #c47000 100%);
+    box-shadow: 
+        0 0 20px #ffd700,
+        0 0 40px rgba(255, 215, 0, 0.9),
+        0 0 60px rgba(255, 149, 0, 0.6);
+}
+
+.equipment-container[data-level="10"] .staff-wing {
+    background: linear-gradient(180deg, 
+        rgba(255, 235, 200, 0.95) 0%, 
+        rgba(255, 215, 0, 0.6) 100%);
+}
+
+/* Golden Particles */
+.equipment-container[data-level="10"] .magic-particle {
+    background: #ffd700;
+    box-shadow: 0 0 8px #ffd700, 0 0 16px rgba(255, 215, 0, 0.9);
+    width: 5px;
+    height: 5px;
+    opacity: 1;
+}
+
+/* Angel Cat at Level 10 - Golden wings */
+.equipment-container[data-level="10"] .cat-bow {
+    opacity: 0;
+}
+
+.equipment-container[data-level="10"] .cat-halo {
+    opacity: 1;
+    border-color: rgba(255, 215, 0, 1);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.9);
+}
+
+.equipment-container[data-level="10"] .cat-wings {
+    opacity: 1;
+}
+
+.equipment-container[data-level="10"] .cat-body,
+.equipment-container[data-level="10"] .cat-face {
+    background: linear-gradient(180deg, #fffef8, #fff5e6, #ffefdc);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
 /* Golden Aura Effect for Max Level */
-.freya-avatar[data-level="10"]::before {
+.equipment-container[data-level="10"]::before {
     content: '';
     position: absolute;
-    width: 120%;
-    height: 120%;
-    top: -10%;
-    left: -10%;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent 70%);
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 50%);
     border-radius: 50%;
     animation: golden-aura 3s ease-in-out infinite;
     pointer-events: none;
@@ -882,8 +2264,940 @@ body {
         opacity: 0.5;
     }
     50% { 
-        transform: scale(1.1);
-        opacity: 0.8;
+        transform: scale(1.2);
+        opacity: 1;
     }
+}
+
+/* ========================================
+   Level-based Landscape Variations
+   ======================================== */
+
+/* ====== LEVEL 0: Wandering - Bleak Winter ====== */
+.hero-section[data-level="0"] .landscape {
+    filter: saturate(0.5) brightness(0.7);
+}
+
+.hero-section[data-level="0"] .aurora {
+    opacity: 0.1;
+}
+
+.hero-section[data-level="0"] .moon {
+    opacity: 0.5;
+    box-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(200, 220, 255, 0.2);
+}
+
+.hero-section[data-level="0"] .star {
+    opacity: 0.3;
+}
+
+.hero-section[data-level="0"] .mist {
+    opacity: 1.5;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(150, 160, 180, 0.3) 25%, 
+        rgba(150, 160, 180, 0.4) 50%, 
+        rgba(150, 160, 180, 0.3) 75%, 
+        transparent 100%);
+}
+
+/* ====== LEVEL 1-2: Awakening - First Light ====== */
+.hero-section[data-level="1"] .aurora,
+.hero-section[data-level="2"] .aurora {
+    opacity: 0.5;
+}
+
+.hero-section[data-level="1"] .landscape,
+.hero-section[data-level="2"] .landscape {
+    filter: saturate(0.7) brightness(0.85);
+}
+
+.hero-section[data-level="1"] .moon,
+.hero-section[data-level="2"] .moon {
+    box-shadow: 
+        0 0 15px rgba(255, 255, 255, 0.6),
+        0 0 30px rgba(200, 220, 255, 0.4);
+}
+
+/* ====== LEVEL 3-4: Space Walker - Purple Aurora ====== */
+.hero-section[data-level="3"] .landscape,
+.hero-section[data-level="4"] .landscape {
+    filter: saturate(0.9) brightness(0.95);
+}
+
+.hero-section[data-level="3"] .aurora-band,
+.hero-section[data-level="4"] .aurora-band {
+    opacity: 0.6;
+}
+
+.hero-section[data-level="3"] .ab1,
+.hero-section[data-level="4"] .ab1 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(189, 147, 249, 0.4) 20%, 
+        rgba(255, 121, 198, 0.5) 40%, 
+        rgba(139, 92, 246, 0.4) 60%, 
+        rgba(189, 147, 249, 0.4) 80%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="3"] .ab2,
+.hero-section[data-level="4"] .ab2 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(139, 92, 246, 0.35) 25%, 
+        rgba(189, 147, 249, 0.45) 50%, 
+        rgba(139, 92, 246, 0.35) 75%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="3"] .moon,
+.hero-section[data-level="4"] .moon {
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.7),
+        0 0 40px rgba(189, 147, 249, 0.5),
+        0 0 60px rgba(139, 92, 246, 0.3);
+}
+
+.hero-section[data-level="3"] .star,
+.hero-section[data-level="4"] .star {
+    color: #e8d0ff;
+    text-shadow: 0 0 5px #e8d0ff, 0 0 10px rgba(189, 147, 249, 0.6);
+}
+
+/* ====== LEVEL 5-6: Alchemy - Red/Cyan Magic ====== */
+.hero-section[data-level="5"] .landscape,
+.hero-section[data-level="6"] .landscape {
+    filter: saturate(1) brightness(1);
+}
+
+.hero-section[data-level="5"] .aurora-band,
+.hero-section[data-level="6"] .aurora-band {
+    opacity: 0.7;
+}
+
+.hero-section[data-level="5"] .ab1,
+.hero-section[data-level="6"] .ab1 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 85, 85, 0.4) 20%, 
+        rgba(139, 233, 253, 0.5) 40%, 
+        rgba(255, 85, 85, 0.4) 60%, 
+        rgba(139, 233, 253, 0.4) 80%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="5"] .ab2,
+.hero-section[data-level="6"] .ab2 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(139, 233, 253, 0.4) 25%, 
+        rgba(255, 85, 85, 0.45) 50%, 
+        rgba(139, 233, 253, 0.4) 75%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="5"] .ab3,
+.hero-section[data-level="6"] .ab3 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 85, 85, 0.3) 30%, 
+        rgba(139, 233, 253, 0.35) 50%, 
+        rgba(255, 85, 85, 0.3) 70%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="5"] .moon,
+.hero-section[data-level="6"] .moon {
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8),
+        0 0 40px rgba(139, 233, 253, 0.5),
+        0 0 60px rgba(255, 85, 85, 0.3);
+}
+
+.hero-section[data-level="5"] .star,
+.hero-section[data-level="6"] .star {
+    color: #8be9fd;
+    text-shadow: 0 0 5px #8be9fd, 0 0 10px rgba(255, 85, 85, 0.5);
+}
+
+.hero-section[data-level="5"] .mountain,
+.hero-section[data-level="6"] .mountain {
+    filter: hue-rotate(-10deg);
+}
+
+/* ====== LEVEL 7-8: Perfect Circle - Yellow/Cyan Harmony ====== */
+.hero-section[data-level="7"] .landscape,
+.hero-section[data-level="8"] .landscape {
+    filter: saturate(1.1) brightness(1.05);
+}
+
+.hero-section[data-level="7"] .aurora-band,
+.hero-section[data-level="8"] .aurora-band {
+    opacity: 0.75;
+}
+
+.hero-section[data-level="7"] .ab1,
+.hero-section[data-level="8"] .ab1 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(241, 250, 140, 0.45) 20%, 
+        rgba(165, 242, 243, 0.55) 40%, 
+        rgba(241, 250, 140, 0.45) 60%, 
+        rgba(165, 242, 243, 0.45) 80%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="7"] .ab2,
+.hero-section[data-level="8"] .ab2 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(165, 242, 243, 0.45) 25%, 
+        rgba(241, 250, 140, 0.5) 50%, 
+        rgba(165, 242, 243, 0.45) 75%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="7"] .moon,
+.hero-section[data-level="8"] .moon {
+    background: radial-gradient(circle at 30% 30%, 
+        #fffff0 0%, 
+        #f1fa8c 40%, 
+        #d4e157 70%, 
+        #a5d6a7 100%);
+    box-shadow: 
+        0 0 25px rgba(241, 250, 140, 0.9),
+        0 0 50px rgba(165, 242, 243, 0.6),
+        0 0 75px rgba(241, 250, 140, 0.4);
+}
+
+.hero-section[data-level="7"] .star,
+.hero-section[data-level="8"] .star {
+    color: #f1fa8c;
+    text-shadow: 0 0 6px #f1fa8c, 0 0 12px rgba(165, 242, 243, 0.6);
+}
+
+.hero-section[data-level="7"] .snow-ground,
+.hero-section[data-level="8"] .snow-ground {
+    background: linear-gradient(180deg, 
+        rgba(220, 240, 230, 0.5) 0%, 
+        rgba(200, 230, 220, 0.65) 50%,
+        rgba(180, 220, 210, 0.75) 100%);
+}
+
+/* ====== LEVEL 9: Prophet - Warm Sunset ====== */
+.hero-section[data-level="9"] .landscape {
+    filter: saturate(1.15) brightness(1.1);
+}
+
+.hero-section[data-level="9"] .aurora-band {
+    opacity: 0.8;
+}
+
+.hero-section[data-level="9"] .ab1 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 184, 108, 0.5) 20%, 
+        rgba(255, 121, 198, 0.55) 40%, 
+        rgba(255, 184, 108, 0.5) 60%, 
+        rgba(255, 121, 198, 0.45) 80%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="9"] .ab2 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 121, 198, 0.45) 25%, 
+        rgba(255, 184, 108, 0.55) 50%, 
+        rgba(255, 121, 198, 0.45) 75%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="9"] .ab3 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 184, 108, 0.35) 30%, 
+        rgba(255, 200, 150, 0.4) 50%, 
+        rgba(255, 184, 108, 0.35) 70%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="9"] .moon {
+    background: radial-gradient(circle at 30% 30%, 
+        #fff 0%, 
+        #ffe8c8 40%, 
+        #ffb86c 70%, 
+        #ff9050 100%);
+    box-shadow: 
+        0 0 30px rgba(255, 184, 108, 0.9),
+        0 0 60px rgba(255, 121, 198, 0.6),
+        0 0 90px rgba(255, 184, 108, 0.4);
+}
+
+.hero-section[data-level="9"] .star {
+    color: #ffb86c;
+    text-shadow: 0 0 6px #ffb86c, 0 0 12px rgba(255, 121, 198, 0.6);
+}
+
+.hero-section[data-level="9"] .mountain {
+    background: linear-gradient(180deg, 
+        rgba(80, 60, 100, 0.85) 0%, 
+        rgba(50, 35, 70, 0.9) 100%);
+}
+
+.hero-section[data-level="9"] .snow-ground {
+    background: linear-gradient(180deg, 
+        rgba(255, 230, 210, 0.5) 0%, 
+        rgba(255, 210, 190, 0.65) 50%,
+        rgba(240, 190, 170, 0.75) 100%);
+}
+
+/* ====== LEVEL 10: All-knowing Winter God - Divine Golden ====== */
+.hero-section[data-level="10"] .landscape {
+    filter: saturate(1.2) brightness(1.15);
+}
+
+.hero-section[data-level="10"] .aurora-band {
+    opacity: 0.9;
+    filter: blur(15px);
+}
+
+.hero-section[data-level="10"] .ab1 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.5) 15%, 
+        rgba(255, 235, 150, 0.6) 30%, 
+        rgba(255, 215, 0, 0.55) 50%, 
+        rgba(255, 235, 150, 0.6) 70%, 
+        rgba(255, 215, 0, 0.5) 85%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="10"] .ab2 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 235, 150, 0.5) 20%, 
+        rgba(255, 215, 0, 0.6) 40%, 
+        rgba(255, 255, 200, 0.55) 60%, 
+        rgba(255, 215, 0, 0.5) 80%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="10"] .ab3 {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 200, 100, 0.4) 25%, 
+        rgba(255, 215, 0, 0.5) 50%, 
+        rgba(255, 200, 100, 0.4) 75%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="10"] .moon {
+    background: radial-gradient(circle at 30% 30%, 
+        #fff 0%, 
+        #fff5d4 30%, 
+        #ffd700 60%, 
+        #daa520 100%);
+    width: 45px;
+    height: 45px;
+    box-shadow: 
+        0 0 40px rgba(255, 215, 0, 1),
+        0 0 80px rgba(255, 215, 0, 0.8),
+        0 0 120px rgba(255, 215, 0, 0.5),
+        0 0 160px rgba(255, 200, 100, 0.3);
+    animation: golden-moon-pulse 3s ease-in-out infinite;
+}
+
+@keyframes golden-moon-pulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 
+            0 0 40px rgba(255, 215, 0, 1),
+            0 0 80px rgba(255, 215, 0, 0.8),
+            0 0 120px rgba(255, 215, 0, 0.5);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 
+            0 0 50px rgba(255, 215, 0, 1),
+            0 0 100px rgba(255, 215, 0, 0.9),
+            0 0 150px rgba(255, 215, 0, 0.6),
+            0 0 200px rgba(255, 200, 100, 0.3);
+    }
+}
+
+.hero-section[data-level="10"] .star {
+    color: #ffd700;
+    text-shadow: 0 0 8px #ffd700, 0 0 16px rgba(255, 215, 0, 0.8);
+    font-size: 120%;
+}
+
+.hero-section[data-level="10"] .mountain {
+    background: linear-gradient(180deg, 
+        rgba(100, 80, 50, 0.8) 0%, 
+        rgba(70, 55, 35, 0.9) 100%);
+}
+
+.hero-section[data-level="10"] .mountain::before {
+    background: linear-gradient(180deg, 
+        rgba(255, 235, 200, 0.7) 0%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="10"] .tree {
+    background: linear-gradient(180deg, 
+        rgba(50, 40, 25, 0.95) 0%, 
+        rgba(35, 28, 18, 1) 100%);
+}
+
+.hero-section[data-level="10"] .tree::before {
+    background: linear-gradient(180deg, 
+        rgba(255, 235, 200, 0.7) 0%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="10"] .snow-ground {
+    background: linear-gradient(180deg, 
+        rgba(255, 245, 220, 0.6) 0%, 
+        rgba(255, 235, 200, 0.7) 50%,
+        rgba(255, 225, 180, 0.8) 100%);
+}
+
+.hero-section[data-level="10"] .snow-ground::before {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.5) 20%, 
+        rgba(255, 235, 200, 0.7) 50%, 
+        rgba(255, 215, 0, 0.5) 80%, 
+        transparent 100%);
+}
+
+.hero-section[data-level="10"] .mist {
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 235, 200, 0.2) 25%, 
+        rgba(255, 215, 0, 0.25) 50%, 
+        rgba(255, 235, 200, 0.2) 75%, 
+        transparent 100%);
+}
+
+/* ========================================
+   Enhanced Environmental Elements
+   ======================================== */
+
+/* --- Shooting Stars (Appear at level 5+) --- */
+.shooting-stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.shooting-star {
+    position: absolute;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.8) 50%, 
+        rgba(255, 255, 255, 1) 100%);
+    border-radius: 50%;
+    transform: rotate(-35deg);
+    animation: shooting-star-fall 4s linear infinite;
+}
+
+.ss1 {
+    top: 5%;
+    left: -10%;
+    animation-delay: 0s;
+}
+
+.ss2 {
+    top: 15%;
+    left: 30%;
+    animation-delay: 2s;
+    width: 40px;
+}
+
+.ss3 {
+    top: 8%;
+    left: 60%;
+    animation-delay: 3.5s;
+    width: 50px;
+}
+
+@keyframes shooting-star-fall {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-35deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+    }
+    40% {
+        transform: translateX(150px) translateY(100px) rotate(-35deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(150px) translateY(100px) rotate(-35deg);
+        opacity: 0;
+    }
+}
+
+/* Shooting stars visibility by level */
+.hero-section[data-level="5"] .shooting-stars,
+.hero-section[data-level="6"] .shooting-stars {
+    opacity: 0.4;
+}
+
+.hero-section[data-level="7"] .shooting-stars,
+.hero-section[data-level="8"] .shooting-stars {
+    opacity: 0.6;
+}
+
+.hero-section[data-level="9"] .shooting-stars {
+    opacity: 0.8;
+}
+
+.hero-section[data-level="10"] .shooting-stars {
+    opacity: 1;
+}
+
+.hero-section[data-level="10"] .shooting-star {
+    background: linear-gradient(90deg, 
+        rgba(255, 215, 0, 0) 0%, 
+        rgba(255, 235, 150, 0.8) 50%, 
+        rgba(255, 215, 0, 1) 100%);
+}
+
+/* --- Magic Circle (Appears at level 7+) --- */
+.magic-circle {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px solid rgba(165, 242, 243, 0);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.magic-circle::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 1px solid rgba(165, 242, 243, 0.3);
+    border-radius: 50%;
+    transform: scale(0.7);
+}
+
+.magic-circle::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: rgba(165, 242, 243, 0.5);
+}
+
+.hero-section[data-level="7"] .magic-circle,
+.hero-section[data-level="8"] .magic-circle {
+    opacity: 0.4;
+    border-color: rgba(241, 250, 140, 0.4);
+    animation: magic-circle-spin 20s linear infinite;
+}
+
+.hero-section[data-level="9"] .magic-circle {
+    opacity: 0.6;
+    border-color: rgba(255, 184, 108, 0.5);
+    box-shadow: 0 0 15px rgba(255, 184, 108, 0.3);
+    animation: magic-circle-spin 15s linear infinite;
+}
+
+.hero-section[data-level="10"] .magic-circle {
+    opacity: 0.8;
+    width: 100px;
+    height: 100px;
+    border-color: rgba(255, 215, 0, 0.6);
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.2);
+    animation: magic-circle-spin 12s linear infinite;
+}
+
+.hero-section[data-level="10"] .magic-circle::after {
+    content: '⚝';
+    font-size: 25px;
+    color: rgba(255, 215, 0, 0.7);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes magic-circle-spin {
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(360deg); }
+}
+
+/* --- Divine Light Pillar (Level 10 only) --- */
+.divine-pillar {
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0) 30%,
+        rgba(255, 215, 0, 0) 100%);
+    opacity: 0;
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.hero-section[data-level="10"] .divine-pillar {
+    opacity: 1;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.1) 20%,
+        rgba(255, 235, 150, 0.2) 40%,
+        rgba(255, 215, 0, 0.15) 60%,
+        rgba(255, 235, 200, 0.1) 80%,
+        transparent 100%);
+    animation: divine-pillar-glow 3s ease-in-out infinite;
+}
+
+.divine-pillar::before,
+.divine-pillar::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.hero-section[data-level="10"] .divine-pillar::before {
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.05) 30%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 70%,
+        transparent 100%);
+    animation: divine-pillar-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes divine-pillar-glow {
+    0%, 100% { 
+        opacity: 0.6;
+        width: 50px;
+    }
+    50% { 
+        opacity: 1;
+        width: 70px;
+    }
+}
+
+@keyframes divine-pillar-shimmer {
+    0%, 100% { 
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    50% { 
+        transform: translateY(-10px);
+        opacity: 1;
+    }
+}
+
+/* Enhanced star visibility and animation for high levels */
+.hero-section[data-level="7"] .star,
+.hero-section[data-level="8"] .star,
+.hero-section[data-level="9"] .star,
+.hero-section[data-level="10"] .star {
+    animation: star-twinkle-enhanced 1.5s ease-in-out infinite;
+}
+
+@keyframes star-twinkle-enhanced {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* ========================================
+   Enhanced Feedback Effects
+   ======================================== */
+
+/* --- Screen Flash Overlay --- */
+.screen-flash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+    background: radial-gradient(circle at center, 
+        rgba(165, 242, 243, 0.4) 0%, 
+        rgba(107, 72, 255, 0.2) 40%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+}
+
+.screen-flash-overlay.active {
+    opacity: 1;
+    animation: screen-flash-pulse 0.3s ease-out;
+}
+
+@keyframes screen-flash-pulse {
+    0% { opacity: 0; transform: scale(0.8); }
+    30% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.1); }
+}
+
+/* --- Magic Burst Particles --- */
+.magic-burst-particle {
+    position: fixed;
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 1001;
+    animation: particle-burst 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    text-shadow: 0 0 10px currentColor;
+}
+
+@keyframes particle-burst {
+    0% {
+        transform: translate(0, 0) rotate(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rotate)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* --- Checkbox Ring and Ripple --- */
+.checkbox-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--primary-glow);
+    border-radius: 6px;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+}
+
+.checkbox-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 60%;
+    background: var(--primary-glow);
+    border-radius: 3px;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+}
+
+.checklist-item.checked .checkbox-core {
+    transform: translate(-50%, -50%) scale(1);
+    animation: core-pulse 0.5s ease-out;
+}
+
+@keyframes core-pulse {
+    0% { transform: translate(-50%, -50%) scale(0); }
+    50% { transform: translate(-50%, -50%) scale(1.3); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.rune-checkbox.ripple .checkbox-ring {
+    animation: checkbox-ripple 0.6s ease-out;
+}
+
+@keyframes checkbox-ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* --- Enhanced Checkbox Checked State --- */
+.checklist-item.checked .rune-checkbox {
+    border-color: var(--primary-glow);
+    background: linear-gradient(135deg, 
+        rgba(165, 242, 243, 0.3) 0%, 
+        rgba(107, 72, 255, 0.2) 100%);
+    box-shadow: 
+        0 0 15px var(--primary-glow),
+        0 0 30px rgba(107, 72, 255, 0.3),
+        inset 0 0 10px rgba(165, 242, 243, 0.2);
+    transform: scale(1.15);
+    animation: checkbox-glow 2s ease-in-out infinite;
+}
+
+@keyframes checkbox-glow {
+    0%, 100% { 
+        box-shadow: 
+            0 0 15px var(--primary-glow),
+            0 0 30px rgba(107, 72, 255, 0.3);
+    }
+    50% { 
+        box-shadow: 
+            0 0 20px var(--primary-glow),
+            0 0 40px rgba(107, 72, 255, 0.5),
+            0 0 60px rgba(165, 242, 243, 0.2);
+    }
+}
+
+/* --- Encourage Floater --- */
+.encourage-floater {
+    position: fixed;
+    top: 40%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--gold);
+    text-shadow: 
+        0 0 10px var(--gold),
+        0 0 20px rgba(255, 215, 0, 0.5),
+        2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+    pointer-events: none;
+    animation: encourage-float 1.5s ease-out forwards;
+    white-space: nowrap;
+}
+
+@keyframes encourage-float {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0;
+    }
+    20% {
+        transform: translateY(-20px) scale(1.2);
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(-60px) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* --- Equipment Celebration Animation --- */
+.equipment-container.celebrating {
+    animation: equipment-celebrate 0.8s ease-out !important;
+}
+
+@keyframes equipment-celebrate {
+    0% { transform: scale(1); }
+    20% { transform: scale(1.15) rotate(-5deg); }
+    40% { transform: scale(1.2) rotate(5deg); }
+    60% { transform: scale(1.15) rotate(-3deg); }
+    80% { transform: scale(1.1) rotate(2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+/* --- Level Up Effect --- */
+.equipment-container.level-up {
+    animation: level-up-burst 1s ease-out !important;
+}
+
+@keyframes level-up-burst {
+    0% { 
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    30% { 
+        transform: scale(1.3);
+        filter: brightness(1.5) saturate(1.5);
+    }
+    50% { 
+        transform: scale(1.2);
+        filter: brightness(2) saturate(2);
+    }
+    100% { 
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+.levelup-particle {
+    position: fixed;
+    font-size: 20px;
+    color: var(--gold);
+    text-shadow: 0 0 15px var(--gold), 0 0 30px rgba(255, 215, 0, 0.5);
+    pointer-events: none;
+    z-index: 1001;
+    animation: levelup-particle-fly 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes levelup-particle-fly {
+    0% {
+        transform: translate(0, 0) scale(0);
+        opacity: 0;
+    }
+    20% {
+        transform: translate(calc(var(--tx) * 0.2), calc(var(--ty) * 0.2)) scale(1.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* --- Progress Bar Update Glow --- */
+.progress-bar.updating {
+    animation: progress-glow 0.5s ease-out;
+}
+
+@keyframes progress-glow {
+    0% { 
+        filter: brightness(1);
+        box-shadow: 0 0 10px var(--primary-glow);
+    }
+    50% { 
+        filter: brightness(1.5);
+        box-shadow: 0 0 25px var(--primary-glow), 0 0 50px rgba(107, 72, 255, 0.5);
+    }
+    100% { 
+        filter: brightness(1);
+        box-shadow: 0 0 10px var(--primary-glow);
+    }
+}
+
+/* --- Enhanced Checked Item Row --- */
+.checklist-item.checked {
+    background: linear-gradient(90deg, 
+        rgba(165, 242, 243, 0.05) 0%, 
+        transparent 50%);
+    animation: row-flash 0.5s ease-out;
+}
+
+@keyframes row-flash {
+    0% { background: rgba(165, 242, 243, 0.3); }
+    100% { background: rgba(165, 242, 243, 0.05); }
 }
 

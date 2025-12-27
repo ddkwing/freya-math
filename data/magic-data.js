@@ -47,8 +47,8 @@ const magicData = [
     },
     {
         id: 2,
-        title: "第2重境界：万物解析 · 解决问题",
-        realm: "万物解析",
+        title: "第2重境界：寒霜初绽 · 解决问题",
+        realm: "寒霜初绽",
         icon: "📜",
         topics: [
             {
@@ -91,8 +91,8 @@ const magicData = [
     },
     {
         id: 3,
-        title: "第3重境界：空间行者 · 位置方向",
-        realm: "空间行者",
+        title: "第3重境界：聆空观幕 · 位置方向",
+        realm: "聆空观幕",
         icon: "🧭",
         topics: [
             {
@@ -114,8 +114,8 @@ const magicData = [
     },
     {
         id: 4,
-        title: "第4重境界：均衡炼金 · 比的性质",
-        realm: "均衡炼金",
+        title: "第4重境界：凝冰释忆 · 比的性质",
+        realm: "凝冰释忆",
         icon: "⚖️",
         topics: [
             {
@@ -138,8 +138,8 @@ const magicData = [
     },
     {
         id: 5,
-        title: "第5重境界：法则分配 · 按比分配",
-        realm: "法则分配",
+        title: "第5重境界：凛冬敕令 · 按比分配",
+        realm: "凛冬敕令",
         icon: "⚗️",
         topics: [
             {
@@ -161,8 +161,8 @@ const magicData = [
     },
     {
         id: 6,
-        title: "第6重境界：结界构造 · 组合图形",
-        realm: "结界构造",
+        title: "第6重境界：雪晶微刻 · 组合图形",
+        realm: "雪晶微刻",
         icon: "🛡️",
         topics: [
             {
@@ -184,8 +184,8 @@ const magicData = [
     },
     {
         id: 7,
-        title: "第7重境界：完美循环 · 圆的应用",
-        realm: "完美循环",
+        title: "第7重境界：永恒归环 · 圆的应用",
+        realm: "永恒归环",
         icon: "⭕",
         topics: [
             {
@@ -231,8 +231,8 @@ const magicData = [
     },
     {
         id: 9,
-        title: "第9重境界：真理预言 · 百分数问题",
-        realm: "真理预言",
+        title: "第9重境界：玄冰先知 · 百分数问题",
+        realm: "玄冰先知",
         icon: "🦋",
         topics: [
             {
@@ -283,4 +283,3 @@ const magicData = [
         ]
     }
 ];
-

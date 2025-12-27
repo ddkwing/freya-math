@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>凛冬咏叹调：Freya的魔数神格重铸</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Background Effects -->
+    <div class="particles"></div>
+
+    <!-- Top Fixed Bar -->
+    <div class="hero-section">
+        <div class="freya-avatar-wrapper float-anim">
+            <div id="freya-avatar" class="freya-avatar" onclick="triggerFreyaTalk()">
+                <!-- Pure CSS Winter Goddess Character -->
+                <div class="freya-character">
+                    <!-- Wings (Behind Everything) -->
+                    <div class="wings">
+                        <div class="wing left-wing"></div>
+                        <div class="wing right-wing"></div>
+                    </div>
+                    <!-- Cape/Cloak -->
+                    <div class="cape"></div>
+                    <!-- Hair Back Layer -->
+                    <div class="hair-back"></div>
+                    <!-- Body/Dress -->
+                    <div class="body-dress">
+                        <div class="collar"></div>
+                        <div class="pendant"></div>
+                    </div>
+                    <!-- Scarf (for early levels) -->
+                    <div class="scarf">
+                        <div class="scarf-end"></div>
+                    </div>
+                    <!-- Face -->
+                    <div class="face">
+                        <!-- Eyes -->
+                        <div class="eye left-eye">
+                            <div class="pupil"></div>
+                            <div class="eye-sparkle"></div>
+                        </div>
+                        <div class="eye right-eye">
+                            <div class="pupil"></div>
+                            <div class="eye-sparkle"></div>
+                        </div>
+                        <!-- Blush -->
+                        <div class="blush left-blush"></div>
+                        <div class="blush right-blush"></div>
+                        <!-- Mouth -->
+                        <div class="mouth"></div>
+                    </div>
+                    <!-- Hair Front Layer -->
+                    <div class="hair-front">
+                        <div class="bangs"></div>
+                        <div class="side-hair left-side"></div>
+                        <div class="side-hair right-side"></div>
+                    </div>
+                    <!-- Crown / Tiara -->
+                    <div class="tiara">
+                        <div class="tiara-gem"></div>
+                    </div>
+                    <!-- Magic Staff -->
+                    <div class="magic-staff">
+                        <div class="staff-orb"></div>
+                    </div>
+                    <!-- Floating Snowflakes -->
+                    <div class="snowflake sf1">❄</div>
+                    <div class="snowflake sf2">❅</div>
+                    <div class="snowflake sf3">❆</div>
+                    <!-- Magic Particles -->
+                    <div class="magic-particle mp1"></div>
+                    <div class="magic-particle mp2"></div>
+                    <div class="magic-particle mp3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="level-badge" id="realm-level">第1重境界</div>
+        <h1 class="hero-title" id="realm-name">元素初醒</h1>
+        
+        <div class="progress-wrapper">
+            <span>魔力重铸:</span>
+            <div class="progress-track">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+            <span id="progress-percent">0%</span>
+        </div>
+    </div>
+
+    <!-- Main Content: Magic Scroll List -->
+    <div class="scrolls-container" id="app-container">
+        <!-- JS will generate content here -->
+    </div>
+
+    <!-- Level Up Toast -->
+    <div class="toast-popup" id="toast"></div>
+
+    <!-- Data Files -->
+    <script src="data/magic-data.js"></script>
+    <script src="data/freya-forms.js"></script>
+    
+    <!-- Main Application -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -93,8 +93,16 @@ function renderList() {
         scrollEl.innerHTML = `
             <div class="scroll-header" onclick="toggleScroll(this)">
                 <div class="scroll-title">${section.icon} ${section.title}</div>
-                <div class="scroll-status ${isSectionDone ? 'done' : ''}">
-                    ${isSectionDone ? '封印解除' : '修炼中 ' + sectionChecked + '/' + sectionTotal}
+                <div class="scroll-header-actions">
+                    <button class="batch-toggle-btn ${isSectionDone ? 'all-checked' : ''}" 
+                            onclick="toggleSectionAll(this, ${section.id}, event)" 
+                            title="${isSectionDone ? 'Uncheck All' : 'Check All'}">
+                        <span class="batch-icon">${isSectionDone ? '✓' : '☐'}</span>
+                        <span class="batch-text">${isSectionDone ? 'Clear' : 'All'}</span>
+                    </button>
+                    <div class="scroll-status ${isSectionDone ? 'done' : ''}">
+                        ${isSectionDone ? '封印解除' : '修炼中 ' + sectionChecked + '/' + sectionTotal}
+                    </div>
                 </div>
             </div>
             <div class="scroll-content">
@@ -113,6 +121,66 @@ function renderList() {
 window.toggleScroll = function(header) {
     const parent = header.parentElement;
     parent.classList.toggle('open');
+};
+
+// --- Toggle All Points in a Section ---
+window.toggleSectionAll = function(btn, sectionId, event) {
+    event.stopPropagation(); // Prevent scroll toggle
+    
+    const scrollEl = btn.closest('.magic-scroll');
+    const checkboxes = scrollEl.querySelectorAll('.checklist-item');
+    const allChecked = btn.classList.contains('all-checked');
+    
+    // Determine new state: if all checked, uncheck all; otherwise check all
+    const newState = !allChecked;
+    
+    checkboxes.forEach(item => {
+        // Extract point id from onclick attribute
+        const onclickAttr = item.getAttribute('onclick');
+        const pidMatch = onclickAttr.match(/togglePoint\('([^']+)'/);
+        if (pidMatch) {
+            const pid = pidMatch[1];
+            const wasChecked = userProgress[pid] === true;
+            
+            // Only update if state changes
+            if (wasChecked !== newState) {
+                userProgress[pid] = newState;
+                
+                if (newState) {
+                    item.classList.add('checked');
+                } else {
+                    item.classList.remove('checked');
+                }
+            }
+        }
+    });
+    
+    // Save to storage
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(userProgress));
+    
+    // Update button state
+    if (newState) {
+        btn.classList.add('all-checked');
+        btn.querySelector('.batch-icon').textContent = '✓';
+        btn.querySelector('.batch-text').textContent = 'Clear';
+        btn.title = 'Uncheck All';
+        
+        // Show celebration effect
+        triggerScreenFlash();
+        showToast('🎉 Section complete! All mastered!');
+        triggerFreyaCelebration();
+    } else {
+        btn.classList.remove('all-checked');
+        btn.querySelector('.batch-icon').textContent = '☐';
+        btn.querySelector('.batch-text').textContent = 'All';
+        btn.title = 'Check All';
+    }
+    
+    // Update section header status
+    updateSectionHeader(checkboxes[0]);
+    
+    // Update global progress
+    updateState();
 };
 
 // --- Toggle Knowledge Point ---

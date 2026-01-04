@@ -600,6 +600,53 @@ body {
     gap: 10px;
 }
 
+.scroll-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.batch-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--primary-glow);
+    background: rgba(165, 242, 243, 0.1);
+    border: 1px solid var(--primary-glow);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.batch-toggle-btn:hover {
+    background: rgba(165, 242, 243, 0.25);
+    box-shadow: 0 0 12px rgba(165, 242, 243, 0.4);
+    transform: scale(1.05);
+}
+
+.batch-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+.batch-toggle-btn .batch-icon {
+    font-size: 0.85rem;
+}
+
+.batch-toggle-btn.all-checked {
+    color: var(--gold);
+    border-color: var(--gold);
+    background: rgba(255, 215, 0, 0.15);
+}
+
+.batch-toggle-btn.all-checked:hover {
+    background: rgba(255, 215, 0, 0.25);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.4);
+}
+
 .scroll-status {
     font-size: 0.75rem;
     color: var(--text-dim);
@@ -2243,30 +2290,499 @@ body {
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
 }
 
-/* Golden Aura Effect for Max Level */
+/* ========================================
+   LEVEL 10: ULTIMATE DIVINE WINTER GOD
+   The Most Spectacular Effects
+   ======================================== */
+
+/* Multi-layer Divine Aura System */
 .equipment-container[data-level="10"]::before {
     content: '';
     position: absolute;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: radial-gradient(circle, rgba(255, 215, 0, 0.3), transparent 50%);
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: 
+        radial-gradient(circle, rgba(255, 215, 0, 0.4) 0%, transparent 30%),
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 25%),
+        radial-gradient(circle at 70% 70%, rgba(255, 200, 100, 0.25) 0%, transparent 25%);
     border-radius: 50%;
-    animation: golden-aura 3s ease-in-out infinite;
+    animation: divine-aura-pulse 2s ease-in-out infinite;
     pointer-events: none;
     z-index: -1;
 }
 
-@keyframes golden-aura {
+.equipment-container[data-level="10"]::after {
+    content: '';
+    position: absolute;
+    width: 400%;
+    height: 400%;
+    top: -150%;
+    left: -150%;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        rgba(255, 215, 0, 0.15) 30deg,
+        transparent 60deg,
+        rgba(255, 235, 150, 0.1) 90deg,
+        transparent 120deg,
+        rgba(255, 215, 0, 0.15) 150deg,
+        transparent 180deg,
+        rgba(255, 235, 150, 0.1) 210deg,
+        transparent 240deg,
+        rgba(255, 215, 0, 0.15) 270deg,
+        transparent 300deg,
+        rgba(255, 235, 150, 0.1) 330deg,
+        transparent 360deg
+    );
+    border-radius: 50%;
+    animation: divine-rays-spin 15s linear infinite;
+    pointer-events: none;
+    z-index: -2;
+}
+
+@keyframes divine-aura-pulse {
     0%, 100% { 
         transform: scale(1);
-        opacity: 0.5;
+        opacity: 0.6;
+        filter: blur(5px);
     }
     50% { 
+        transform: scale(1.3);
+        opacity: 1;
+        filter: blur(8px);
+    }
+}
+
+@keyframes divine-rays-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Sacred Geometry Rings */
+.equipment-container[data-level="10"] .orb-ring.r1 {
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    border: 3px solid rgba(255, 215, 0, 0.7);
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.5),
+        inset 0 0 15px rgba(255, 215, 0, 0.3);
+    animation: sacred-ring-spin 6s linear infinite;
+}
+
+.equipment-container[data-level="10"] .orb-ring.r2 {
+    width: 280%;
+    height: 280%;
+    top: -90%;
+    left: -90%;
+    border: 2px dashed rgba(255, 235, 150, 0.6);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+    animation: sacred-ring-spin 10s linear infinite reverse;
+}
+
+@keyframes sacred-ring-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hyper-Intense Orb Core */
+.equipment-container[data-level="10"] .orb-inner {
+    background: radial-gradient(circle at 35% 35%, 
+        #ffffff 0%, 
+        #fffef0 15%,
+        #ffd700 35%, 
+        #ff9500 55%, 
+        #ff6600 75%,
+        #cc4400 100%);
+    box-shadow: 
+        0 0 30px #ffd700,
+        0 0 60px rgba(255, 215, 0, 1),
+        0 0 100px rgba(255, 149, 0, 0.8),
+        0 0 150px rgba(255, 100, 0, 0.5),
+        inset 0 0 30px rgba(255, 255, 255, 0.8);
+    animation: divine-orb-heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes divine-orb-heartbeat {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 
+            0 0 30px #ffd700,
+            0 0 60px rgba(255, 215, 0, 1),
+            0 0 100px rgba(255, 149, 0, 0.8);
+    }
+    25% { 
+        transform: translate(-50%, -50%) scale(1.15);
+        box-shadow: 
+            0 0 50px #ffd700,
+            0 0 100px rgba(255, 215, 0, 1),
+            0 0 150px rgba(255, 149, 0, 0.9),
+            0 0 200px rgba(255, 100, 0, 0.6);
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+    75% { 
+        transform: translate(-50%, -50%) scale(1.2);
+        box-shadow: 
+            0 0 60px #fff,
+            0 0 120px rgba(255, 215, 0, 1),
+            0 0 180px rgba(255, 149, 0, 1),
+            0 0 250px rgba(255, 100, 0, 0.7);
+    }
+}
+
+/* Divine Crown Ultra Effect */
+.equipment-container[data-level="10"] .tiara-gem {
+    animation: divine-crown-gem 1s ease-in-out infinite;
+}
+
+.equipment-container[data-level="10"] .tiara-gem.side-gem {
+    animation: divine-crown-side-gem 1.2s ease-in-out infinite;
+}
+
+@keyframes divine-crown-gem {
+    0%, 100% { 
+        box-shadow: 0 0 20px #ffd700, 0 0 40px rgba(255, 215, 0, 0.9), 0 0 60px rgba(255, 149, 0, 0.6);
+        transform: translateX(-50%) scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 40px #fff, 0 0 80px #ffd700, 0 0 120px rgba(255, 215, 0, 1), 0 0 160px rgba(255, 149, 0, 0.8);
+        transform: translateX(-50%) scale(1.25);
+    }
+}
+
+@keyframes divine-crown-side-gem {
+    0%, 100% { 
+        box-shadow: 0 0 15px #ffd700, 0 0 30px rgba(255, 215, 0, 0.8);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 25px #fff, 0 0 50px #ffd700, 0 0 75px rgba(255, 215, 0, 0.9);
         transform: scale(1.2);
+    }
+}
+
+/* Epic Divine Wings */
+.equipment-container[data-level="10"] .wings {
+    opacity: 1;
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+}
+
+.equipment-container[data-level="10"] .wing {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 235, 150, 0.8) 20%, 
+        rgba(255, 215, 0, 0.7) 40%,
+        rgba(255, 200, 100, 0.5) 60%, 
+        rgba(255, 215, 0, 0.3) 80%,
+        transparent 100%);
+    box-shadow: 
+        inset 0 0 40px rgba(255, 255, 255, 0.6),
+        inset 0 0 80px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(255, 215, 0, 0.7),
+        0 0 80px rgba(255, 200, 100, 0.5);
+    animation: divine-wing-flutter 2s ease-in-out infinite;
+}
+
+.equipment-container[data-level="10"] .left-wing {
+    animation-name: divine-wing-flutter-left;
+}
+
+.equipment-container[data-level="10"] .right-wing {
+    animation-name: divine-wing-flutter-right;
+}
+
+@keyframes divine-wing-flutter-left {
+    0%, 100% { 
+        transform: rotate(-15deg) scaleX(1) scaleY(1);
+        filter: brightness(1);
+    }
+    25% { 
+        transform: rotate(-25deg) scaleX(1.1) scaleY(1.05);
+        filter: brightness(1.3);
+    }
+    50% { 
+        transform: rotate(-10deg) scaleX(0.95) scaleY(0.98);
+        filter: brightness(1.1);
+    }
+    75% { 
+        transform: rotate(-20deg) scaleX(1.05) scaleY(1.02);
+        filter: brightness(1.5);
+    }
+}
+
+@keyframes divine-wing-flutter-right {
+    0%, 100% { 
+        transform: rotate(15deg) scaleX(1) scaleY(1);
+        filter: brightness(1);
+    }
+    25% { 
+        transform: rotate(25deg) scaleX(1.1) scaleY(1.05);
+        filter: brightness(1.3);
+    }
+    50% { 
+        transform: rotate(10deg) scaleX(0.95) scaleY(0.98);
+        filter: brightness(1.1);
+    }
+    75% { 
+        transform: rotate(20deg) scaleX(1.05) scaleY(1.02);
+        filter: brightness(1.5);
+    }
+}
+
+/* Wing Feathers Sparkle */
+.equipment-container[data-level="10"] .wing-feather {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(255, 235, 150, 0.7) 50%,
+        rgba(255, 215, 0, 0.5) 100%);
+    animation: feather-sparkle 1.5s ease-in-out infinite;
+}
+
+.equipment-container[data-level="10"] .wing-feather.wf1 { animation-delay: 0s; }
+.equipment-container[data-level="10"] .wing-feather.wf2 { animation-delay: 0.3s; }
+.equipment-container[data-level="10"] .wing-feather.wf3 { animation-delay: 0.6s; }
+
+@keyframes feather-sparkle {
+    0%, 100% { opacity: 0.6; filter: brightness(1); }
+    50% { opacity: 1; filter: brightness(1.5); }
+}
+
+/* Ultra Staff Power */
+.equipment-container[data-level="10"] .magic-staff {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    animation: divine-staff-power 2s ease-in-out infinite;
+}
+
+@keyframes divine-staff-power {
+    0%, 100% { 
+        transform: rotate(20deg) translateY(0);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+    50% { 
+        transform: rotate(18deg) translateY(-8px);
+        filter: drop-shadow(0 0 30px rgba(255, 215, 0, 1)) brightness(1.2);
+    }
+}
+
+.equipment-container[data-level="10"] .staff-orb {
+    animation: staff-orb-divine 1s ease-in-out infinite;
+}
+
+@keyframes staff-orb-divine {
+    0%, 100% { 
+        box-shadow: 0 0 25px #ffd700, 0 0 50px rgba(255, 215, 0, 1);
+        transform: translateX(-50%) scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 40px #fff, 0 0 80px #ffd700, 0 0 120px rgba(255, 215, 0, 0.9);
+        transform: translateX(-50%) scale(1.3);
+    }
+}
+
+/* Hyper Magic Particles */
+.equipment-container[data-level="10"] .magic-particle {
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #fff 0%, #ffd700 50%, transparent 100%);
+    box-shadow: 0 0 15px #ffd700, 0 0 30px rgba(255, 215, 0, 1), 0 0 45px rgba(255, 200, 100, 0.8);
+    animation: divine-particle-orbit 3s ease-in-out infinite;
+}
+
+.equipment-container[data-level="10"] .mp1 { animation-delay: 0s; }
+.equipment-container[data-level="10"] .mp2 { animation-delay: 0.75s; }
+.equipment-container[data-level="10"] .mp3 { animation-delay: 1.5s; }
+.equipment-container[data-level="10"] .mp4 { animation-delay: 2.25s; }
+
+@keyframes divine-particle-orbit {
+    0% { 
+        transform: translateY(0) translateX(0) scale(0.5);
+        opacity: 0;
+    }
+    15% { 
+        transform: translateY(-15px) translateX(5px) scale(1.5);
         opacity: 1;
     }
+    30% { 
+        transform: translateY(-25px) translateX(-5px) scale(1.2);
+        opacity: 1;
+    }
+    50% { 
+        transform: translateY(-35px) translateX(10px) scale(1.8);
+        opacity: 0.9;
+    }
+    70% { 
+        transform: translateY(-45px) translateX(-10px) scale(1);
+        opacity: 0.6;
+    }
+    100% { 
+        transform: translateY(-60px) translateX(0) scale(0.3);
+        opacity: 0;
+    }
+}
+
+/* Divine Snowflakes */
+.equipment-container[data-level="10"] .snowflake {
+    color: #ffd700;
+    text-shadow: 
+        0 0 10px #ffd700, 
+        0 0 20px rgba(255, 215, 0, 1), 
+        0 0 30px rgba(255, 200, 100, 0.8),
+        0 0 40px rgba(255, 255, 255, 0.5);
+    animation: divine-snowflake 2s ease-in-out infinite;
+}
+
+.equipment-container[data-level="10"] .sf1 { animation-delay: 0s; }
+.equipment-container[data-level="10"] .sf2 { animation-delay: 0.5s; }
+.equipment-container[data-level="10"] .sf3 { animation-delay: 1s; }
+
+@keyframes divine-snowflake {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg) scale(1); 
+        opacity: 0.8;
+        filter: brightness(1);
+    }
+    25% { 
+        transform: translateY(-8px) rotate(90deg) scale(1.3); 
+        opacity: 1;
+        filter: brightness(1.5);
+    }
+    50% { 
+        transform: translateY(-12px) rotate(180deg) scale(1.5); 
+        opacity: 1;
+        filter: brightness(2);
+    }
+    75% { 
+        transform: translateY(-6px) rotate(270deg) scale(1.2); 
+        opacity: 1;
+        filter: brightness(1.3);
+    }
+}
+
+/* Angel Cat Divine Form */
+.equipment-container[data-level="10"] .pet-cat {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    animation: divine-cat-float 2s ease-in-out infinite;
+}
+
+@keyframes divine-cat-float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg);
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8));
+    }
+    25% { 
+        transform: translateY(-5px) rotate(-2deg);
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    }
+    50% { 
+        transform: translateY(-8px) rotate(0deg);
+        filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)) brightness(1.2);
+    }
+    75% { 
+        transform: translateY(-4px) rotate(2deg);
+        filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    }
+}
+
+.equipment-container[data-level="10"] .cat-halo {
+    width: 60%;
+    height: 20%;
+    border: 3px solid rgba(255, 215, 0, 1);
+    box-shadow: 
+        0 0 20px rgba(255, 215, 0, 1),
+        0 0 40px rgba(255, 215, 0, 0.8),
+        inset 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: cat-halo-divine 1.5s ease-in-out infinite;
+}
+
+@keyframes cat-halo-divine {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 1), 0 0 40px rgba(255, 215, 0, 0.8);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 35px rgba(255, 255, 255, 1), 0 0 70px rgba(255, 215, 0, 1), 0 0 100px rgba(255, 215, 0, 0.6);
+        transform: scale(1.1);
+    }
+}
+
+.equipment-container[data-level="10"] .cat-wings {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.equipment-container[data-level="10"] .cat-wing {
+    background: linear-gradient(135deg, 
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 235, 150, 0.8) 40%, 
+        rgba(255, 215, 0, 0.6) 100%);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    animation: cat-wing-divine 1.5s ease-in-out infinite;
+}
+
+.equipment-container[data-level="10"] .cat-wing.cw-left {
+    animation-delay: 0s;
+}
+
+.equipment-container[data-level="10"] .cat-wing.cw-right {
+    animation-delay: 0.1s;
+}
+
+@keyframes cat-wing-divine {
+    0%, 100% { transform: rotate(-20deg) scaleX(1); }
+    50% { transform: rotate(-30deg) scaleX(1.15); }
+}
+
+/* Divine Cape Flow */
+.equipment-container[data-level="10"] .cape {
+    background: linear-gradient(180deg, 
+        rgba(255, 235, 200, 0.95) 0%, 
+        rgba(255, 215, 0, 0.9) 30%, 
+        rgba(218, 165, 32, 0.95) 60%,
+        rgba(139, 105, 20, 1) 100%);
+    box-shadow: 
+        inset 0 5px 40px rgba(255, 255, 255, 0.5),
+        0 10px 40px rgba(255, 215, 0, 0.6),
+        0 0 60px rgba(255, 200, 100, 0.4);
+    animation: divine-cape-flow 3s ease-in-out infinite;
+}
+
+@keyframes divine-cape-flow {
+    0%, 100% { 
+        transform: scaleX(1) skewY(0deg);
+        filter: brightness(1);
+    }
+    25% { 
+        transform: scaleX(1.08) skewY(2deg);
+        filter: brightness(1.1);
+    }
+    50% { 
+        transform: scaleX(1.05) skewY(-1deg);
+        filter: brightness(1.2);
+    }
+    75% { 
+        transform: scaleX(1.1) skewY(1deg);
+        filter: brightness(1.15);
+    }
+}
+
+.equipment-container[data-level="10"] .cape-pattern {
+    background: 
+        radial-gradient(circle at 15% 25%, rgba(255, 255, 255, 0.5) 0%, transparent 12%),
+        radial-gradient(circle at 85% 35%, rgba(255, 255, 255, 0.45) 0%, transparent 10%),
+        radial-gradient(circle at 50% 55%, rgba(255, 255, 255, 0.4) 0%, transparent 15%),
+        radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.35) 0%, transparent 12%),
+        radial-gradient(circle at 75% 80%, rgba(255, 255, 255, 0.3) 0%, transparent 10%);
+    animation: cape-pattern-shimmer 2s ease-in-out infinite;
+}
+
+@keyframes cape-pattern-shimmer {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
 }
 
 /* ========================================
@@ -2554,133 +3070,251 @@ body {
         rgba(240, 190, 170, 0.75) 100%);
 }
 
-/* ====== LEVEL 10: All-knowing Winter God - Divine Golden ====== */
+/* ====== LEVEL 10: All-knowing Winter God - ULTIMATE DIVINE REALM ====== */
 .hero-section[data-level="10"] .landscape {
-    filter: saturate(1.2) brightness(1.15);
+    filter: saturate(1.4) brightness(1.2) contrast(1.05);
+    animation: divine-realm-pulse 4s ease-in-out infinite;
 }
 
+@keyframes divine-realm-pulse {
+    0%, 100% { filter: saturate(1.4) brightness(1.2) contrast(1.05); }
+    50% { filter: saturate(1.6) brightness(1.35) contrast(1.1); }
+}
+
+/* Epic Multi-Layer Aurora */
 .hero-section[data-level="10"] .aurora-band {
-    opacity: 0.9;
-    filter: blur(15px);
+    opacity: 1;
+    filter: blur(12px);
+    animation: divine-aurora-wave 5s ease-in-out infinite;
+}
+
+@keyframes divine-aurora-wave {
+    0%, 100% { 
+        transform: translateX(-10%) skewX(-8deg);
+        opacity: 0.7;
+        filter: blur(12px) brightness(1);
+    }
+    50% { 
+        transform: translateX(10%) skewX(8deg);
+        opacity: 1;
+        filter: blur(15px) brightness(1.4);
+    }
 }
 
 .hero-section[data-level="10"] .ab1 {
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(255, 215, 0, 0.5) 15%, 
-        rgba(255, 235, 150, 0.6) 30%, 
-        rgba(255, 215, 0, 0.55) 50%, 
-        rgba(255, 235, 150, 0.6) 70%, 
-        rgba(255, 215, 0, 0.5) 85%, 
+        rgba(255, 255, 255, 0.4) 10%,
+        rgba(255, 215, 0, 0.7) 25%, 
+        rgba(255, 235, 150, 0.8) 40%, 
+        rgba(255, 255, 200, 0.75) 55%, 
+        rgba(255, 235, 150, 0.8) 70%, 
+        rgba(255, 215, 0, 0.7) 85%, 
+        rgba(255, 255, 255, 0.4) 95%,
         transparent 100%);
+    animation-delay: 0s;
 }
 
 .hero-section[data-level="10"] .ab2 {
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(255, 235, 150, 0.5) 20%, 
-        rgba(255, 215, 0, 0.6) 40%, 
-        rgba(255, 255, 200, 0.55) 60%, 
-        rgba(255, 215, 0, 0.5) 80%, 
+        rgba(255, 200, 100, 0.5) 15%, 
+        rgba(255, 235, 150, 0.7) 30%, 
+        rgba(255, 215, 0, 0.8) 50%, 
+        rgba(255, 255, 200, 0.7) 70%, 
+        rgba(255, 215, 0, 0.6) 85%, 
         transparent 100%);
+    animation-delay: 1.5s;
 }
 
 .hero-section[data-level="10"] .ab3 {
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(255, 200, 100, 0.4) 25%, 
-        rgba(255, 215, 0, 0.5) 50%, 
-        rgba(255, 200, 100, 0.4) 75%, 
+        rgba(255, 180, 80, 0.5) 20%, 
+        rgba(255, 215, 0, 0.65) 40%, 
+        rgba(255, 255, 150, 0.6) 60%, 
+        rgba(255, 200, 100, 0.55) 80%, 
         transparent 100%);
+    animation-delay: 3s;
 }
 
+/* Divine Sun-Moon Fusion */
 .hero-section[data-level="10"] .moon {
     background: radial-gradient(circle at 30% 30%, 
-        #fff 0%, 
-        #fff5d4 30%, 
-        #ffd700 60%, 
-        #daa520 100%);
-    width: 45px;
-    height: 45px;
+        #ffffff 0%, 
+        #fffff0 20%,
+        #fff5d4 40%, 
+        #ffd700 65%, 
+        #ff9500 85%,
+        #ff6600 100%);
+    width: 55px;
+    height: 55px;
     box-shadow: 
-        0 0 40px rgba(255, 215, 0, 1),
-        0 0 80px rgba(255, 215, 0, 0.8),
-        0 0 120px rgba(255, 215, 0, 0.5),
-        0 0 160px rgba(255, 200, 100, 0.3);
-    animation: golden-moon-pulse 3s ease-in-out infinite;
+        0 0 50px rgba(255, 255, 255, 1),
+        0 0 100px rgba(255, 215, 0, 1),
+        0 0 150px rgba(255, 215, 0, 0.9),
+        0 0 200px rgba(255, 149, 0, 0.7),
+        0 0 250px rgba(255, 100, 0, 0.5),
+        0 0 300px rgba(255, 200, 100, 0.3);
+    animation: divine-sun-pulse 2s ease-in-out infinite;
 }
 
-@keyframes golden-moon-pulse {
+@keyframes divine-sun-pulse {
     0%, 100% { 
         transform: scale(1);
         box-shadow: 
-            0 0 40px rgba(255, 215, 0, 1),
-            0 0 80px rgba(255, 215, 0, 0.8),
-            0 0 120px rgba(255, 215, 0, 0.5);
+            0 0 50px rgba(255, 255, 255, 1),
+            0 0 100px rgba(255, 215, 0, 1),
+            0 0 150px rgba(255, 215, 0, 0.9),
+            0 0 200px rgba(255, 149, 0, 0.7);
+    }
+    25% { 
+        transform: scale(1.08);
+        box-shadow: 
+            0 0 70px rgba(255, 255, 255, 1),
+            0 0 140px rgba(255, 215, 0, 1),
+            0 0 200px rgba(255, 215, 0, 1),
+            0 0 280px rgba(255, 149, 0, 0.85),
+            0 0 350px rgba(255, 100, 0, 0.5);
     }
     50% { 
         transform: scale(1.05);
+    }
+    75% { 
+        transform: scale(1.12);
         box-shadow: 
-            0 0 50px rgba(255, 215, 0, 1),
-            0 0 100px rgba(255, 215, 0, 0.9),
-            0 0 150px rgba(255, 215, 0, 0.6),
-            0 0 200px rgba(255, 200, 100, 0.3);
+            0 0 80px rgba(255, 255, 255, 1),
+            0 0 160px rgba(255, 215, 0, 1),
+            0 0 240px rgba(255, 215, 0, 1),
+            0 0 320px rgba(255, 149, 0, 0.9),
+            0 0 400px rgba(255, 100, 0, 0.6);
     }
 }
 
-.hero-section[data-level="10"] .star {
-    color: #ffd700;
-    text-shadow: 0 0 8px #ffd700, 0 0 16px rgba(255, 215, 0, 0.8);
-    font-size: 120%;
+.hero-section[data-level="10"] .moon-glow {
+    width: 400%;
+    height: 400%;
+    top: -150%;
+    left: -150%;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.3) 0%, 
+        rgba(255, 215, 0, 0.2) 30%,
+        transparent 60%);
+    animation: divine-moon-glow 3s ease-in-out infinite;
 }
 
+@keyframes divine-moon-glow {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.3); opacity: 1; }
+}
+
+/* Divine Stars Constellation */
+.hero-section[data-level="10"] .star {
+    color: #ffd700;
+    text-shadow: 
+        0 0 10px #fff, 
+        0 0 20px #ffd700, 
+        0 0 30px rgba(255, 215, 0, 1),
+        0 0 40px rgba(255, 200, 100, 0.8);
+    font-size: 150%;
+    animation: divine-star-burst 1s ease-in-out infinite;
+}
+
+.hero-section[data-level="10"] .s1 { animation-delay: 0s; }
+.hero-section[data-level="10"] .s2 { animation-delay: 0.2s; }
+.hero-section[data-level="10"] .s3 { animation-delay: 0.4s; }
+.hero-section[data-level="10"] .s4 { animation-delay: 0.6s; }
+.hero-section[data-level="10"] .s5 { animation-delay: 0.8s; }
+.hero-section[data-level="10"] .s6 { animation-delay: 1s; }
+
+@keyframes divine-star-burst {
+    0%, 100% { 
+        opacity: 0.7; 
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1.8) rotate(180deg);
+        filter: brightness(2);
+    }
+}
+
+/* Golden Mountains */
 .hero-section[data-level="10"] .mountain {
     background: linear-gradient(180deg, 
-        rgba(100, 80, 50, 0.8) 0%, 
-        rgba(70, 55, 35, 0.9) 100%);
+        rgba(139, 105, 20, 0.85) 0%, 
+        rgba(100, 75, 15, 0.9) 50%,
+        rgba(70, 50, 10, 0.95) 100%);
 }
 
 .hero-section[data-level="10"] .mountain::before {
     background: linear-gradient(180deg, 
-        rgba(255, 235, 200, 0.7) 0%, 
+        rgba(255, 255, 220, 0.85) 0%, 
+        rgba(255, 235, 180, 0.5) 50%,
         transparent 100%);
 }
 
+/* Golden Trees */
 .hero-section[data-level="10"] .tree {
     background: linear-gradient(180deg, 
-        rgba(50, 40, 25, 0.95) 0%, 
-        rgba(35, 28, 18, 1) 100%);
+        rgba(80, 60, 20, 0.95) 0%, 
+        rgba(50, 35, 10, 1) 100%);
 }
 
 .hero-section[data-level="10"] .tree::before {
     background: linear-gradient(180deg, 
-        rgba(255, 235, 200, 0.7) 0%, 
+        rgba(255, 245, 200, 0.9) 0%, 
+        rgba(255, 235, 180, 0.5) 50%,
         transparent 100%);
 }
 
+/* Divine Golden Ground */
 .hero-section[data-level="10"] .snow-ground {
     background: linear-gradient(180deg, 
-        rgba(255, 245, 220, 0.6) 0%, 
-        rgba(255, 235, 200, 0.7) 50%,
-        rgba(255, 225, 180, 0.8) 100%);
+        rgba(255, 250, 230, 0.7) 0%, 
+        rgba(255, 240, 200, 0.8) 50%,
+        rgba(255, 225, 170, 0.9) 100%);
+    box-shadow: 0 -5px 30px rgba(255, 215, 0, 0.4);
 }
 
 .hero-section[data-level="10"] .snow-ground::before {
+    height: 15px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(255, 215, 0, 0.5) 20%, 
-        rgba(255, 235, 200, 0.7) 50%, 
-        rgba(255, 215, 0, 0.5) 80%, 
+        rgba(255, 255, 255, 0.6) 15%, 
+        rgba(255, 215, 0, 0.7) 30%, 
+        rgba(255, 255, 200, 0.9) 50%, 
+        rgba(255, 215, 0, 0.7) 70%, 
+        rgba(255, 255, 255, 0.6) 85%, 
         transparent 100%);
+    filter: blur(5px);
+    animation: ground-shimmer 2s ease-in-out infinite;
 }
 
+@keyframes ground-shimmer {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Divine Mist */
 .hero-section[data-level="10"] .mist {
+    height: 40px;
     background: linear-gradient(90deg, 
         transparent 0%, 
-        rgba(255, 235, 200, 0.2) 25%, 
-        rgba(255, 215, 0, 0.25) 50%, 
-        rgba(255, 235, 200, 0.2) 75%, 
+        rgba(255, 255, 220, 0.25) 20%, 
+        rgba(255, 215, 0, 0.35) 40%, 
+        rgba(255, 255, 200, 0.4) 60%, 
+        rgba(255, 215, 0, 0.35) 80%, 
         transparent 100%);
+    filter: blur(10px);
+    animation: divine-mist-flow 12s linear infinite;
+}
+
+@keyframes divine-mist-flow {
+    0% { transform: translateX(-50%); opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { transform: translateX(0%); opacity: 0.6; }
 }
 
 /* ========================================
@@ -2774,10 +3408,44 @@ body {
 }
 
 .hero-section[data-level="10"] .shooting-star {
+    width: 100px;
+    height: 4px;
     background: linear-gradient(90deg, 
-        rgba(255, 215, 0, 0) 0%, 
-        rgba(255, 235, 150, 0.8) 50%, 
+        transparent 0%, 
+        rgba(255, 200, 100, 0.6) 20%,
+        rgba(255, 235, 150, 1) 50%, 
+        rgba(255, 255, 255, 1) 80%,
         rgba(255, 215, 0, 1) 100%);
+    box-shadow: 
+        0 0 10px rgba(255, 215, 0, 1),
+        0 0 20px rgba(255, 235, 150, 0.8),
+        0 0 30px rgba(255, 255, 255, 0.6);
+    animation: divine-shooting-star 3s linear infinite;
+}
+
+.hero-section[data-level="10"] .ss1 { animation-delay: 0s; }
+.hero-section[data-level="10"] .ss2 { animation-delay: 1s; width: 80px; }
+.hero-section[data-level="10"] .ss3 { animation-delay: 2s; width: 90px; }
+
+@keyframes divine-shooting-star {
+    0% {
+        transform: translateX(0) translateY(0) rotate(-35deg);
+        opacity: 0;
+    }
+    5% {
+        opacity: 1;
+    }
+    25% {
+        opacity: 1;
+    }
+    35% {
+        transform: translateX(250px) translateY(150px) rotate(-35deg);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(250px) translateY(150px) rotate(-35deg);
+        opacity: 0;
+    }
 }
 
 /* --- Magic Circle (Appears at level 7+) --- */
@@ -2831,21 +3499,68 @@ body {
 }
 
 .hero-section[data-level="10"] .magic-circle {
-    opacity: 0.8;
-    width: 100px;
-    height: 100px;
-    border-color: rgba(255, 215, 0, 0.6);
+    opacity: 1;
+    width: 140px;
+    height: 140px;
+    border: 3px solid rgba(255, 215, 0, 0.9);
     box-shadow: 
-        0 0 20px rgba(255, 215, 0, 0.4),
-        0 0 40px rgba(255, 215, 0, 0.2);
-    animation: magic-circle-spin 12s linear infinite;
+        0 0 30px rgba(255, 215, 0, 0.7),
+        0 0 60px rgba(255, 215, 0, 0.5),
+        0 0 90px rgba(255, 200, 100, 0.3),
+        inset 0 0 30px rgba(255, 215, 0, 0.2);
+    animation: divine-magic-circle-spin 8s linear infinite;
+}
+
+@keyframes divine-magic-circle-spin {
+    0% { 
+        transform: translateX(-50%) rotate(0deg) scale(1);
+        box-shadow: 
+            0 0 30px rgba(255, 215, 0, 0.7),
+            0 0 60px rgba(255, 215, 0, 0.5);
+    }
+    50% { 
+        transform: translateX(-50%) rotate(180deg) scale(1.1);
+        box-shadow: 
+            0 0 50px rgba(255, 215, 0, 0.9),
+            0 0 100px rgba(255, 215, 0, 0.7),
+            0 0 150px rgba(255, 200, 100, 0.5);
+    }
+    100% { 
+        transform: translateX(-50%) rotate(360deg) scale(1);
+    }
+}
+
+.hero-section[data-level="10"] .magic-circle::before {
+    border: 2px dashed rgba(255, 235, 150, 0.7);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+    animation: inner-circle-spin 6s linear infinite reverse;
+}
+
+@keyframes inner-circle-spin {
+    0% { transform: scale(0.7) rotate(0deg); }
+    100% { transform: scale(0.7) rotate(360deg); }
 }
 
 .hero-section[data-level="10"] .magic-circle::after {
-    content: '⚝';
-    font-size: 25px;
-    color: rgba(255, 215, 0, 0.7);
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    content: '✦';
+    font-size: 35px;
+    color: rgba(255, 215, 0, 1);
+    text-shadow: 
+        0 0 15px rgba(255, 215, 0, 1),
+        0 0 30px rgba(255, 235, 150, 0.8),
+        0 0 45px rgba(255, 255, 255, 0.6);
+    animation: magic-symbol-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes magic-symbol-pulse {
+    0%, 100% { 
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% { 
+        transform: translate(-50%, -50%) scale(1.3) rotate(180deg);
+        opacity: 1;
+    }
 }
 
 @keyframes magic-circle-spin {
@@ -2872,14 +3587,30 @@ body {
 
 .hero-section[data-level="10"] .divine-pillar {
     opacity: 1;
+    width: 100px;
     background: linear-gradient(180deg, 
-        transparent 0%, 
-        rgba(255, 215, 0, 0.1) 20%,
-        rgba(255, 235, 150, 0.2) 40%,
-        rgba(255, 215, 0, 0.15) 60%,
-        rgba(255, 235, 200, 0.1) 80%,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 200, 0.15) 15%, 
+        rgba(255, 215, 0, 0.25) 30%,
+        rgba(255, 235, 150, 0.35) 50%,
+        rgba(255, 215, 0, 0.25) 70%,
+        rgba(255, 235, 200, 0.15) 85%,
         transparent 100%);
-    animation: divine-pillar-glow 3s ease-in-out infinite;
+    animation: divine-pillar-ascend 2s ease-in-out infinite;
+    filter: blur(2px);
+}
+
+@keyframes divine-pillar-ascend {
+    0%, 100% { 
+        opacity: 0.7;
+        width: 80px;
+        filter: blur(2px) brightness(1);
+    }
+    50% { 
+        opacity: 1;
+        width: 120px;
+        filter: blur(3px) brightness(1.3);
+    }
 }
 
 .divine-pillar::before,
@@ -2895,46 +3626,302 @@ body {
 .hero-section[data-level="10"] .divine-pillar::before {
     background: linear-gradient(180deg, 
         transparent 0%, 
-        rgba(255, 255, 255, 0.05) 30%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.05) 70%,
+        rgba(255, 255, 255, 0.15) 20%,
+        rgba(255, 255, 200, 0.25) 40%,
+        rgba(255, 255, 255, 0.3) 60%,
+        rgba(255, 255, 200, 0.2) 80%,
         transparent 100%);
-    animation: divine-pillar-shimmer 2s ease-in-out infinite;
+    animation: divine-pillar-shimmer 1.5s ease-in-out infinite;
 }
 
-@keyframes divine-pillar-glow {
-    0%, 100% { 
-        opacity: 0.6;
-        width: 50px;
-    }
-    50% { 
-        opacity: 1;
-        width: 70px;
-    }
+.hero-section[data-level="10"] .divine-pillar::after {
+    width: 200%;
+    left: -50%;
+    background: 
+        radial-gradient(ellipse at 50% 30%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 60%, rgba(255, 235, 150, 0.1) 0%, transparent 45%),
+        radial-gradient(ellipse at 50% 90%, rgba(255, 255, 200, 0.12) 0%, transparent 40%);
+    animation: divine-pillar-particles 3s ease-in-out infinite;
 }
 
 @keyframes divine-pillar-shimmer {
     0%, 100% { 
         transform: translateY(0);
-        opacity: 0.5;
+        opacity: 0.6;
     }
     50% { 
-        transform: translateY(-10px);
+        transform: translateY(-15px);
         opacity: 1;
+    }
+}
+
+@keyframes divine-pillar-particles {
+    0%, 100% { 
+        opacity: 0.5;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.2);
     }
 }
 
 /* Enhanced star visibility and animation for high levels */
 .hero-section[data-level="7"] .star,
 .hero-section[data-level="8"] .star,
-.hero-section[data-level="9"] .star,
-.hero-section[data-level="10"] .star {
+.hero-section[data-level="9"] .star {
     animation: star-twinkle-enhanced 1.5s ease-in-out infinite;
 }
 
 @keyframes star-twinkle-enhanced {
     0%, 100% { opacity: 0.6; transform: scale(1); }
     50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* ========================================
+   LEVEL 10 EXCLUSIVE: Divine Runes
+   ======================================== */
+
+.divine-runes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.divine-rune {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 215, 0, 0);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0);
+    font-family: serif;
+    font-weight: bold;
+}
+
+.hero-section[data-level="10"] .divine-runes {
+    opacity: 1;
+}
+
+.hero-section[data-level="10"] .divine-rune {
+    color: rgba(255, 215, 0, 0.9);
+    text-shadow: 
+        0 0 10px rgba(255, 215, 0, 1),
+        0 0 20px rgba(255, 235, 150, 0.8),
+        0 0 30px rgba(255, 255, 200, 0.6);
+    animation: divine-rune-float 4s ease-in-out infinite;
+}
+
+.hero-section[data-level="10"] .dr1 {
+    top: 20%;
+    left: 5%;
+    font-size: 18px;
+    animation-delay: 0s;
+}
+
+.hero-section[data-level="10"] .dr2 {
+    top: 35%;
+    right: 8%;
+    font-size: 22px;
+    animation-delay: 0.8s;
+}
+
+.hero-section[data-level="10"] .dr3 {
+    top: 15%;
+    left: 35%;
+    font-size: 16px;
+    animation-delay: 1.6s;
+}
+
+.hero-section[data-level="10"] .dr4 {
+    top: 45%;
+    left: 10%;
+    font-size: 20px;
+    animation-delay: 2.4s;
+}
+
+.hero-section[data-level="10"] .dr5 {
+    top: 25%;
+    right: 25%;
+    font-size: 17px;
+    animation-delay: 3.2s;
+}
+
+@keyframes divine-rune-float {
+    0%, 100% { 
+        transform: translateY(0) rotate(0deg) scale(1);
+        opacity: 0.6;
+        filter: brightness(1);
+    }
+    25% { 
+        transform: translateY(-8px) rotate(5deg) scale(1.1);
+        opacity: 0.9;
+        filter: brightness(1.3);
+    }
+    50% { 
+        transform: translateY(-12px) rotate(-3deg) scale(1.2);
+        opacity: 1;
+        filter: brightness(1.6);
+    }
+    75% { 
+        transform: translateY(-6px) rotate(3deg) scale(1.1);
+        opacity: 0.8;
+        filter: brightness(1.2);
+    }
+}
+
+/* ========================================
+   LEVEL 10 EXCLUSIVE: Energy Rings
+   ======================================== */
+
+.energy-rings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.energy-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid transparent;
+}
+
+.hero-section[data-level="10"] .energy-rings {
+    opacity: 1;
+}
+
+.hero-section[data-level="10"] .energy-ring {
+    border-color: rgba(255, 215, 0, 0.5);
+    box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.4),
+        inset 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.hero-section[data-level="10"] .er1 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: energy-ring-expand 3s ease-out infinite;
+}
+
+.hero-section[data-level="10"] .er2 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: energy-ring-expand 3s ease-out infinite 1s;
+}
+
+.hero-section[data-level="10"] .er3 {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: energy-ring-expand 3s ease-out infinite 2s;
+}
+
+@keyframes energy-ring-expand {
+    0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 1;
+        border-width: 4px;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2.5);
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+/* ========================================
+   LEVEL 10 EXCLUSIVE: Divine Sparkles
+   ======================================== */
+
+.divine-sparkles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sparkle {
+    position: absolute;
+    color: transparent;
+    font-size: 12px;
+}
+
+.hero-section[data-level="10"] .divine-sparkles {
+    opacity: 1;
+}
+
+.hero-section[data-level="10"] .sparkle {
+    color: #ffd700;
+    text-shadow: 
+        0 0 8px #ffd700,
+        0 0 16px rgba(255, 235, 150, 0.8),
+        0 0 24px rgba(255, 255, 200, 0.6);
+    animation: sparkle-twinkle 2s ease-in-out infinite;
+}
+
+.hero-section[data-level="10"] .sp1 { top: 10%; left: 15%; animation-delay: 0s; font-size: 10px; }
+.hero-section[data-level="10"] .sp2 { top: 30%; left: 5%; animation-delay: 0.25s; font-size: 14px; }
+.hero-section[data-level="10"] .sp3 { top: 50%; right: 5%; animation-delay: 0.5s; font-size: 12px; }
+.hero-section[data-level="10"] .sp4 { top: 25%; right: 15%; animation-delay: 0.75s; font-size: 11px; }
+.hero-section[data-level="10"] .sp5 { top: 40%; left: 25%; animation-delay: 1s; font-size: 9px; }
+.hero-section[data-level="10"] .sp6 { top: 55%; right: 20%; animation-delay: 1.25s; font-size: 13px; }
+.hero-section[data-level="10"] .sp7 { top: 15%; left: 45%; animation-delay: 1.5s; font-size: 10px; }
+.hero-section[data-level="10"] .sp8 { top: 35%; right: 35%; animation-delay: 1.75s; font-size: 12px; }
+
+@keyframes sparkle-twinkle {
+    0%, 100% { 
+        opacity: 0.3;
+        transform: scale(0.8) rotate(0deg);
+    }
+    25% { 
+        opacity: 1;
+        transform: scale(1.5) rotate(90deg);
+    }
+    50% { 
+        opacity: 0.5;
+        transform: scale(1) rotate(180deg);
+    }
+    75% { 
+        opacity: 1;
+        transform: scale(1.3) rotate(270deg);
+    }
+}
+
+/* ========================================
+   LEVEL 10: Hero Section Divine Glow
+   ======================================== */
+
+.hero-section[data-level="10"] {
+    background: linear-gradient(180deg, 
+        rgba(20, 15, 5, 0.98) 0%, 
+        rgba(40, 30, 10, 0.95) 30%,
+        rgba(60, 45, 15, 0.92) 60%,
+        rgba(80, 60, 20, 0.9) 100%);
+    border-bottom: 2px solid rgba(255, 215, 0, 0.6);
+    box-shadow: 
+        0 5px 30px rgba(0,0,0,0.6),
+        0 0 50px rgba(255, 215, 0, 0.2),
+        inset 0 0 100px rgba(255, 215, 0, 0.05);
 }
 
 /* ========================================
